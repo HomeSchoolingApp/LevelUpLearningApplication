@@ -1,7 +1,6 @@
 package com.leveluplearning.models;
 
 import javax.persistence.*;
-import javax.xml.soap.Text;
 
 /**
  * Created by renecortez on 7/6/17.
@@ -14,21 +13,21 @@ public class Rating {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "origin")//relationship to id?
-    private int origin;
+    @Column(name = "rated_by")
+    private User ratedBy;
 
-    @Column(name = "destination")//relationship to id?
-    private int destination;
+    @Column(name = "rated_to")
+    private User ratedTo;
 
     @Column(name = "rating")
     private int rating;
 
-    @Column(name = "review")
-    private Text review;
+    @Column(name = "review", columnDefinition = "TEXT")
+    private String review;
 
-    public Rating(int origin, int destination, int rating, Text review) {
-        this.origin = origin;
-        this.destination = destination;
+    public Rating(User ratedBy, User ratedTo, int rating, String review) {
+        this.ratedBy = ratedBy;
+        this.ratedTo = ratedTo;
         this.rating = rating;
         this.review = review;
     }
@@ -41,20 +40,20 @@ public class Rating {
         this.id = id;
     }
 
-    public int getOrigin() {
-        return origin;
+    public User getRatedBy() {
+        return ratedBy;
     }
 
-    public void setOrigin(int origin) {
-        this.origin = origin;
+    public void setRatedBy(User origin) {
+        this.ratedBy = ratedBy;
     }
 
-    public int getDestination() {
-        return destination;
+    public User getRatedTo() {
+        return ratedTo;
     }
 
-    public void setDestination(int destination) {
-        this.destination = destination;
+    public void setRatedTo(User destination) {
+        this.ratedTo = ratedTo;
     }
 
     public int getRating() {
@@ -65,11 +64,11 @@ public class Rating {
         this.rating = rating;
     }
 
-    public Text getReview() {
+    public String getReview() {
         return review;
     }
 
-    public void setReview(Text review) {
+    public void setReview(String review) {
         this.review = review;
     }
 }

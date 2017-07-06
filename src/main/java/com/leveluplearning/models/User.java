@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import javax.xml.soap.Text;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by renecortez on 7/6/17.
@@ -48,8 +49,8 @@ public class User {
     @Column
     private String language;
 
-    @Column(nullable = false)
-    private Text profSum;
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String profSum;
 
     @Column
     private int eduLevel;
@@ -63,13 +64,13 @@ public class User {
     @Column(nullable = false, length = 45)
     private String state;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String aboutMe;
 
-    @Column
-    private String references;
+    @Column(columnDefinition = "TEXT")
+    private List<References> references;
 
-    public User(String username, String email, String password, Date dob, String gender, boolean student, String firstName, String lastName, String imgUrl, String language, Text profSum, int eduLevel, String certification, String city, String state, String aboutMe, String references) {
+    public User(String username, String email, String password, Date dob, String gender, boolean student, String firstName, String lastName, String imgUrl, String language, String profSum, int eduLevel, String certification, String city, String state, String aboutMe) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -86,7 +87,6 @@ public class User {
         this.city = city;
         this.state = state;
         this.aboutMe = aboutMe;
-        this.references = references;
     }
 
     public long getId() {
@@ -177,11 +177,11 @@ public class User {
         this.language = language;
     }
 
-    public Text getProfSum() {
+    public String getProfSum() {
         return profSum;
     }
 
-    public void setProfSum(Text profSum) {
+    public void setProfSum(String profSum) {
         this.profSum = profSum;
     }
 
@@ -225,11 +225,4 @@ public class User {
         this.aboutMe = aboutMe;
     }
 
-    public String getReferences() {
-        return references;
-    }
-
-    public void setReferences(String references) {
-        this.references = references;
-    }
 }

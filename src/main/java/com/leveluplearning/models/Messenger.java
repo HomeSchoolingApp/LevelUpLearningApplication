@@ -14,56 +14,56 @@ public class Messenger {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;//would this be idMessenger
+    private long id;
 
     @Column(name = "sender")
-    private int sender;
+    private User sender;
 
     @Column(name = "reciever")
-    private int reciever;
+    private User reciever;
 
-    @Column(name = "message")
-    private Text message;
+    @Column(name = "message", columnDefinition = "TEXT")
+    private String message;
 
     @Column(name = "date_sent")
     private Date dateSent;
 
-    public Messenger(int sender, int reciever, Text message, Date dateSent) {
+    public Messenger(User sender, User reciever, String message, Date dateSent) {
         this.sender = sender;
         this.reciever = reciever;
         this.message = message;
         this.dateSent = dateSent;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public int getSender() {
+    public User getSender() {
         return sender;
     }
 
-    public void setSender(int sender) {
+    public void setSender(User sender) {
         this.sender = sender;
     }
 
-    public int getReciever() {
+    public User getReciever() {
         return reciever;
     }
 
-    public void setReciever(int reciever) {
+    public void setReciever(User reciever) {
         this.reciever = reciever;
     }
 
-    public Text getMessage() {
+    public String getMessage() {
         return message;
     }
 
-    public void setMessage(Text message) {
+    public void setMessage(String message) {
         this.message = message;
     }
 
