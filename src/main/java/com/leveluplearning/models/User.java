@@ -67,7 +67,7 @@ public class User {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String aboutMe;
 
-    @Column(columnDefinition = "TEXT")
+    @Column
     private List<References> references;
 
     public User(String username, String email, String password, Date dob, String gender, boolean student, String firstName, String lastName, String imgUrl, String language, String profSum, int eduLevel, String certification, String city, String state, String aboutMe) {
