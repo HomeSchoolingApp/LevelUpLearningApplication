@@ -13,10 +13,10 @@ public class Rating {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "rated_by")
+    @ManyToOne
     private User ratedBy;
 
-    @Column(name = "rated_to")
+    @ManyToOne
     private User ratedTo;
 
     @Column(name = "rating")

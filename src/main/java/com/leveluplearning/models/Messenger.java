@@ -16,10 +16,10 @@ public class Messenger {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "sender")
+    @ManyToOne
     private User sender;
 
-    @Column(name = "reciever")
+    @ManyToOne
     private User reciever;
 
     @Column(name = "message", columnDefinition = "TEXT")
@@ -27,6 +27,7 @@ public class Messenger {
 
     @Column(name = "date_sent")
     private Date dateSent;
+
 
     public Messenger(User sender, User reciever, String message, Date dateSent) {
         this.sender = sender;
