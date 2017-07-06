@@ -306,3 +306,20 @@ footer a:hover{
 .footertitle{
     color: #000;
 }
+
+/* MODAL REGISTER BUTTON CSS */
+
+.modal-title {
+    width: 100%;
+    text-align: center;
+}
+
+.modal-footer>:not(:first-child) {
+    margin-right: 0px;
+    width: 100%;
+}
+
+.modal-footer>:not(:last-child) {
+    margin-right: 0px;
+    width: 100%;
+}
