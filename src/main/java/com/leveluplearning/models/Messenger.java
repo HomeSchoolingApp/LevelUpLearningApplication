@@ -10,7 +10,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "messenger")
-public class Messanger {
+public class Messenger {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +28,7 @@ public class Messanger {
     @Column(name = "date_sent")
     private Date dateSent;
 
-    public Messanger(int sender, int reciever, Text message, Date dateSent) {
+    public Messenger(int sender, int reciever, Text message, Date dateSent) {
         this.sender = sender;
         this.reciever = reciever;
         this.message = message;
