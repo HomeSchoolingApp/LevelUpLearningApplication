@@ -2,16 +2,15 @@ package com.leveluplearning.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.xml.soap.Text;
 import java.util.Date;
 
 /**
  * Created by renecortez on 7/6/17.
  */
+@Entity
+@Table(name = "users")
 public class User {
 
     @Id
