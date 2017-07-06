@@ -1,9 +1,9 @@
 package com.leveluplearning.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import javax.xml.soap.Text;
 import java.util.Date;
 import java.util.List;
 
@@ -67,8 +67,35 @@ public class User {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String aboutMe;
 
-    @Column
-    private List<References> references;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "user_subject",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "subject_id")}
+    )
+
+    private List<Subject> subjects;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "child_parent",
+            joinColumns = {@JoinColumn(name = "parent_id")},
+            inverseJoinColumns = {@JoinColumn(name = "child_id")}
+    )
+    private List<User> childParent;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "teacher_parent",
+            joinColumns = {@JoinColumn(name = "parent_id")},
+            inverseJoinColumns = {@JoinColumn(name = "teacher_id")}
+    )
+    private List<User> teacherParent;
+
+    @OneToMany(mappedBy = "user")
+    @JsonBackReference
+    private List<Reference> references;
 
     public User(String username, String email, String password, Date dob, String gender, boolean student, String firstName, String lastName, String imgUrl, String language, String profSum, int eduLevel, String certification, String city, String state, String aboutMe) {
         this.username = username;

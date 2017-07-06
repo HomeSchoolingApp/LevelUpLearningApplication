@@ -1,21 +1,20 @@
 package com.leveluplearning.models;
 
 import javax.persistence.*;
-import javax.xml.soap.Text;
 
 /**
  * Created by renecortez on 7/6/17.
  */
 
 @Entity
-@Table(name = "references")
-public class References {
+@Table(name = "user_references")
+public class Reference {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;//would this be the ref id?
 
-    @Column(name = "user")
+    @ManyToOne
     private User user;
 
     @Column(name = "phone_number")
@@ -27,7 +26,7 @@ public class References {
     @Column(name = "ref_comment", columnDefinition = "TEXT")
     private String refComment;
 
-    public References(User user, String phoneNumber, String fullName, String refComment) {
+    public Reference(User user, String phoneNumber, String fullName, String refComment) {
         this.user = user;
         this.phoneNumber = phoneNumber;
         this.fullName = fullName;
