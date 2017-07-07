@@ -55,7 +55,7 @@
     <div class="row">
         <h1>My Profile</h1>
         <div class="col l8 offset-l2">
-            <form th:action="@{/teacher/profile}" th:method="POST" th:object="${user}" enctype="multipart/form-data">
+            <form th:action="@{/profile}" th:method="POST" th:object="${user}" enctype="multipart/form-data">
 
                 <label for="picture">Picture</label>
                 <input id="picture" type="image" class="picture" th:field="*{img_url}"/>
