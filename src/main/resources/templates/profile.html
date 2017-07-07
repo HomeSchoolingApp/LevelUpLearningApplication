@@ -58,16 +58,53 @@
             <form th:action="@{/teacher/profile}" th:method="POST" th:object="${user}" enctype="multipart/form-data">
 
                 <label for="picture">Picture</label>
-                <input id="picture" type="image" class="picture" th:field="*{picture}" />
+                <input id="picture" type="image" class="picture" th:field="*{img_url}"/>
 
                 <label for="firstName">First Name</label>
-                <input id="firstName" class="form-control" th:field="*{firstName}" />
+                <input id="firstName" class="form-control" th:field="*{first_name}"/>
 
                 <label for="lastName">Last Name</label>
-                <input id="lastName" class="form-control" th:field="*{lastName}" />
+                <input id="lastName" class="form-control" th:field="*{last_name}"/>
 
                 <label for="gender">Gender</label>
-                <input id="gender" class="form-control" th:field="*{gender}" />
+                <input id="gender" class="form-control" th:field="*{gender}"/>
+
+                <label for="phoneNumber">Phone Number</label>
+                <input id="phoneNumber" class="form-control" th:field="*{phone_number}"/>
+
+                <label for="emailAddress">Email Address</label>
+                <input id="emailAddress" class="form-control" th:field="*{email}"/>
+
+                <label for="city">City</label>
+                <input id="city" class="form-control" th:field="*{city}"/>
+
+                <label for="state">State</label>
+                <input id="state" class="form-control" th:field="*{state}"/>
+
+
+                <!-- The following pertain only to the parent profile and request information about the student -->
+
+                <h2>Tell us about your student</h2>
+
+                <label for="name">Name</label>
+                <input id="name" class="form-control" th:field="*{name}"/>
+
+                <label for="age">Age</label>
+                <input id="age" class="form-control" th:field="*{age}"/>
+
+                <label for="gradeLevel">Grade Level</label>
+                <input id="gradeLevel" class="form-control" th:field="*{gradeLevel}"/>
+
+                <label for="childGender">Gender</label>
+                <input id="childGender" class="form-control" th:field="*{childGender}"/>
+
+                <label for="subjects">Subjects Needed</label>
+                <input id="subjects" class="form-control" th:field="*{subjects}"/>
+
+
+                <!-- The following pertain only to the teacher profile -->
+
+                <h2>Teacher</h2>
 
                 <label for="subjects">Subjects</label>
                 <input id="subjects" class="form-control" th:field="*{subjects}" />
@@ -86,6 +123,9 @@
 
                 <label for="professionalSummary">Professional Summary</label>
                 <input id="professionalSummary" class="text" th:field="*{professionalSummary}" />
+
+
+                <!--  Teacher -->
 
                 <input class="btn" type="Update" />
             </form>
