@@ -42,7 +42,7 @@
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" />
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
 
@@ -55,25 +55,25 @@
     <div class="row">
         <h1>My Profile</h1>
         <div class="col l8 offset-l2">
-            <form th:action="@{/parent/profile}" th:method="POST" th:object="${user}" enctype="multipart/form-data">
+            <form th:action="@{/parent/profile}" th:method="POST" th:object="${users}" enctype="multipart/form-data">
 
                 <label for="picture">Picture</label>
-                <input id="picture" type="image" class="picture" th:field="*{picture}"/>
+                <input id="picture" type="image" class="picture" th:field="*{img_url}"/>
 
                 <label for="firstName">First Name</label>
-                <input id="firstName" class="form-control" th:field="*{firstName}"/>
+                <input id="firstName" class="form-control" th:field="*{first_name}"/>
 
                 <label for="lastName">Last Name</label>
-                <input id="lastName" class="form-control" th:field="*{lastName}"/>
+                <input id="lastName" class="form-control" th:field="*{last_name}"/>
 
                 <label for="gender">Gender</label>
                 <input id="gender" class="form-control" th:field="*{gender}"/>
 
                 <label for="phoneNumber">Phone Number</label>
-                <input id="phoneNumber" class="form-control" th:field="*{phoneNumber}"/>
+                <input id="phoneNumber" class="form-control" th:field="*{phone_number}"/>
 
                 <label for="emailAddress">Email Address</label>
-                <input id="emailAddress" class="form-control" th:field="*{emailAddress}"/>
+                <input id="emailAddress" class="form-control" th:field="*{email}"/>
 
                 <label for="city">City</label>
                 <input id="city" class="form-control" th:field="*{city}"/>
