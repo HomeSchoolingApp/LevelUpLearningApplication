@@ -1,5 +1,6 @@
 package com.leveluplearning.Controllers;
 
+import com.leveluplearning.models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +18,7 @@ public class AuthenticationController {
 
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
-//        model.addAttribute("user", new User());
+        model.addAttribute("user", new User());
         return "register";
     }
 }

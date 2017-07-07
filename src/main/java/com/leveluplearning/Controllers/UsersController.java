@@ -28,6 +28,8 @@ public class UsersController {
 
         usersDao.save(user);
 
+
+
         return "redirect:/login";
     }
 
