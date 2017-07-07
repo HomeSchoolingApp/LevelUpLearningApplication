@@ -338,3 +338,10 @@ footer a:hover{
     background-size: cover;
     position: relative;
 }
+
+.loginform {
+    background: #FFFFFF;
+    margin: 100px;
+    padding: 100px;
+
+}
