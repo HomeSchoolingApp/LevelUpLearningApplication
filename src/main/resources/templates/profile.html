@@ -61,10 +61,10 @@
                 <input id="picture" type="image" class="picture" th:field="*{img_url}"/>
 
                 <label for="firstName">First Name</label>
-                <input id="firstName" class="form-control" th:field="*{first_name}"/>
+                <input id="firstName" class="form-control" th:field="*{firstName}"/>
 
                 <label for="lastName">Last Name</label>
-                <input id="lastName" class="form-control" th:field="*{last_name}"/>
+                <input id="lastName" class="form-control" th:field="*{lastName}"/>
 
                 <label for="gender">Gender</label>
                 <input id="gender" class="form-control" th:field="*{gender}"/>
@@ -81,22 +81,26 @@
                 <label for="state">State</label>
                 <input id="state" class="form-control" th:field="*{state}"/>
 
+                <!-- Pertains to parent -->
+
+                <label for="aboutMe">About Me</label>
+                <input id="aboutMe" class="form-control" th:field="*{aboutMe}"/>
 
                 <!-- The following pertain only to the parent profile and request information about the student -->
 
                 <h2>Tell us about your student</h2>
 
-                <label for="name">Name</label>
-                <input id="name" class="form-control" th:field="*{name}"/>
+                <label for="studentName">Name</label>
+                <input id="studentName" class="form-control" th:field="*{studentName}"/>
 
-                <label for="age">Age</label>
-                <input id="age" class="form-control" th:field="*{age}"/>
+                <label for="dob">Age</label>  <!-- date of birth to be displayed as age number not date format -->
+                <input id="dob" class="form-control" th:field="*{dob}"/>
 
-                <label for="gradeLevel">Grade Level</label>
-                <input id="gradeLevel" class="form-control" th:field="*{gradeLevel}"/>
+                <label for="eduLevel">Grade Level</label>
+                <input id="eduLevel" class="form-control" th:field="*{eduLevel}"/>
 
-                <label for="childGender">Gender</label>
-                <input id="childGender" class="form-control" th:field="*{childGender}"/>
+                <label for="studentGender">Gender</label>
+                <input id="studentGender" class="form-control" th:field="*{studentGender}"/>
 
                 <label for="subjects">Subjects Needed</label>
                 <input id="subjects" class="form-control" th:field="*{subjects}"/>
@@ -108,6 +112,9 @@
 
                 <label for="subjects">Subjects</label>
                 <input id="subjects" class="form-control" th:field="*{subjects}" />
+
+                <label for="language">Language</label>
+                <input id="language" class="form-control" th:field="*{language}">
 
                 <label for="resume">Resume</label>
                 <input id="resume" class="form-control" th:field="*{resume}" />
@@ -121,8 +128,8 @@
                 <label for="certifications">Certifications</label>
                 <input id="certifications" class="form-control" th:field="*{certifications}" />
 
-                <label for="professionalSummary">Professional Summary</label>
-                <input id="professionalSummary" class="text" th:field="*{professionalSummary}" />
+                <label for="profSum">Professional Summary</label>
+                <input id="profSum" class="text" th:field="*{profSum}" />
 
 
                 <!--  Teacher -->
