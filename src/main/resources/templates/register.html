@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <body>
 
@@ -8,6 +9,8 @@
         <h1>Register</h1>
         <div class="col l8 offset-l2">
             <form th:action="@{/users/register}" th:method="POST" th:object="${user}">
+
+                <input type="hidden" name="role" th:value="${param.q[0]}" />
 
                 <label for="firstName">First Name</label>
                 <input id="firstName" class="form-control" th:field="*{firstName}" />

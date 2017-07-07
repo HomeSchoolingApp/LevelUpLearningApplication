@@ -25,6 +25,11 @@ public class UserRoles {
         this.role = role;
     }
 
+    public UserRoles(String role, long id) {
+        this.userId = id;
+        this.role = role;
+    }
+
     public long getId() {
         return id;
     }
