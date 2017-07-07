@@ -24,7 +24,7 @@ public class User {
     @Column(nullable = false, unique = true, length = 45)
     private String email;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, length = 300)
     @JsonIgnore
     private String password;
 
@@ -49,7 +49,10 @@ public class User {
     @Column
     private String language;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
+    @Column(nullable = true, length = 10)
+    private Long phoneNumber;
+
+    @Column(columnDefinition = "TEXT")
     private String profSum;
 
     @Column
@@ -58,13 +61,13 @@ public class User {
     @Column
     private String certification;
 
-    @Column(nullable = false, length = 45)
+    @Column(length = 45)
     private String city;
 
-    @Column(nullable = false, length = 45)
+    @Column(length = 45)
     private String state;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT")
     private String aboutMe;
 
 
@@ -117,6 +120,10 @@ public class User {
     }
 
     public User(User user) {
+
+    }
+
+    public User() {
 
     }
 
@@ -256,4 +263,11 @@ public class User {
         this.aboutMe = aboutMe;
     }
 
+    public Long getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(Long phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 }
