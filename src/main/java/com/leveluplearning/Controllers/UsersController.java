@@ -26,9 +26,11 @@ public class UsersController {
     public String saveUser(@ModelAttribute User user,
                            @RequestParam (name = "role") String role) {
 
-        System.out.println(role);
+        System.out.println(user.getPassword());
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        System.out.println(user.getPassword());
 
         usersDao.save(user);
 

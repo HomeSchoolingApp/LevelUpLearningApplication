@@ -119,12 +119,27 @@ public class User {
         this.aboutMe = aboutMe;
     }
 
-    public User(User user) {
+    public User() {
 
     }
 
-    public User() {
-
+    public User(User user) {
+        this.username = user.username;
+        this.email = user.email;
+        this.password = user.password;
+        this.dob = user.dob;
+        this.gender = user.gender;
+        this.student = user.student;
+        this.firstName = user.firstName;
+        this.lastName = user.lastName;
+        this.imgUrl = user.imgUrl;
+        this.language = user.language;
+        this.profSum = user.profSum;
+        this.eduLevel = user.eduLevel;
+        this.certification = user.certification;
+        this.city = user.city;
+        this.state = user.state;
+        this.aboutMe = user.aboutMe;
     }
 
     public long getId() {
