@@ -1,6 +1,7 @@
-package com.leveluplearning.models;
+package com.leveluplearning.svcs;
 
 
+import com.leveluplearning.models.UsersWithRoles;
 import com.leveluplearning.svcs.UserDetailsLoader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
