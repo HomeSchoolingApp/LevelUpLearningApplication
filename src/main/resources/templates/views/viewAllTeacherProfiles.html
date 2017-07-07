@@ -65,13 +65,13 @@
             <!--<img th:src="${'/uploads/' + teacher.imageUrl}" alt="" width="200" height="200" />-->
         <!--</div>-->
 
-        <h2>Name: <span th:text="${user.teacher.firstName} + ${user.teacher.lastName}"></span></h2>
-        <h2>Email: <span th:text="${user.teacher.email}"></span></h2>
-        <h2>City: <span th:text="${user.teacher.city}"></span></h2>
-        <h2>State: <span th:text="${user.teacher.state}"></span></h2>
-        <h2>Language: <span th:text="${user.teacher.language}"></span></h2>
-        <h2>Certification: <span th:text="${user.teacher.certification}"></span></h2>
-        <h2>Professional Summary: <span th:text="${user.teacher.profSum}"></span></h2>
+        <h2>Name: <span th:text="${teacher.firstName} + ${user.teacher.lastName}"></span></h2>
+        <h2>Email: <span th:text="${teacher.email}"></span></h2>
+        <h2>City: <span th:text="${teacher.city}"></span></h2>
+        <h2>State: <span th:text="${teacher.state}"></span></h2>
+        <h2>Language: <span th:text="${teacher.language}"></span></h2>
+        <h2>Certification: <span th:text="${teacher.certification}"></span></h2>
+        <h2>Professional Summary: <span th:text="${teacher.profSum}"></span></h2>
 
     </div>
 </div>
