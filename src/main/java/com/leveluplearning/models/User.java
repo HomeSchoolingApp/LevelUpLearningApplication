@@ -116,6 +116,10 @@ public class User {
         this.aboutMe = aboutMe;
     }
 
+    public User(User user) {
+
+    }
+
     public long getId() {
         return id;
     }
