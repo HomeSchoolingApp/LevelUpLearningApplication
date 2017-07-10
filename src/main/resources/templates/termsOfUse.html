@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<!--HEAD & STYLESHEETS-->
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1"/>
+    <title>Level Up Learning</title>
+    <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="image/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://use.fontawesome.com/4a71ee3d99.js"></script>
+    <link rel="stylesheet" href="stylesheets/stylesheet.css"/>
+
+</head>
+
+<!--BODY-->
+<body>
+<div class="hero-image">
+    <div class="hero-overlay">
+        <div class="hero-text">
+            <h1 style="font-size:50px">LEVEL UP LEARNING</h1>
+            <a href="/login" class="btn btn-success" role="button" aria-pressed="true">LOGIN</a>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#parentOrTeacher">REGISTER
+            </button>
+
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="parentOrTeacher" tabindex="-1" role="dialog" aria-labelledby="parentOrTeacherLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title" id="parentOrTeacherLabel">Hello, &amp; Thank You For Your
+                            Registration!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Would you like to register as a parent or teacher?
+                    </div>
+                    <div class="modal-footer">
+                        <a href="/register?q=ROLE_PARENT" class="btn btn-success" role="button" aria-pressed="true">PARENT</a>
+                        <a href="/register?q=ROLE_TEACHER" class="btn btn-success" role="button" aria-pressed="true">TEACHER</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--END MODAL DIV-->
+
+<!--END MODAL DIV-->
+
+<h1>
+    Terms of use
+</h1>
+
+<h2>Thank you for visiting Level Up Learning. All services listed are provided by outside service providers.</h2>
+<br/>
+<ol>
+
+
+    <h2>There are 4 things to know before you begin:</h2>
+
+    <li>Level Up Learning <span style="text-decoration: underline;">does not legally endorse</span> the service provider's or consumers listed on this website. We
+        simply share professional suggestions based on the service provider's and consumers that have chosen to
+        personally list their information to help consumers' needs in the local community.
+    </li>
+
+    <li>Level Up Learning <span style="text-decoration: underline;">does not determine your eligibility</span> for services offered by outside service providers,
+        only they can make this determination. You may need to provide them with certain information to help them in
+        their decision.
+    </li>
+
+    <li>Level Up Learning <span style="text-decoration: underline;">cannot guarantee the accuracy of information</span> about the service providers and consumers.
+        While we make efforts to request accurate information, it's still a good idea to contact the service
+        provider to confirm information before you make a payment arrangement.
+    </li>
+
+    <li>Level Up Learning <span style="text-decoration: underline;">will not share your information with other service providers</span> without your permission. Your
+        information is shared only when YOU choose to make a connection with a listed service provider or consumer.
+        We are committed to keeping your personal information confidential.
+    </li>
+
+</ol>
+
+<form>
+    <input type="checkbox" name="agree" value="agree" id="agree"><label for="agree"> Check if you understand and accept
+    these terms of use.
+</label>
+</form>
+
+
+<!-- FOOTER STARTS HERE -->
+
+<footer class="mainfooter" role="contentinfo">
+    <div class="footer-top p-y-2">
+    </div>
+    <div class="footer-middle">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <!--Column1-->
+                    <div class="footer-pad">
+                        <h4 class="footertitle">Address</h4>
+                        <address>
+                            <ul class="list-unstyled">
+                                <li>
+                                    Codeup<br/>
+                                    600 Navarro St #350<br/>
+                                    San Antonio, TX<br/>
+                                    78205<br/>
+                                </li>
+                                <li>
+                                    Phone: (210) 555-5555
+                                </li>
+                            </ul>
+                        </address>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <!--Column1-->
+                    <div class="footer-pad">
+                        <h4 class="footertitle">Popular Services</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#"></a></li>
+                            <li><a href="#">Payment Center</a></li>
+                            <li><a href="#">Contact Directory</a></li>
+                            <li><a href="#">Forms</a></li>
+                            <li><a href="#">News and Updates</a></li>
+                            <li><a href="#">FAQs</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <!--Column1-->
+                    <div class="footer-pad">
+                        <h4 class="footertitle">Website Information</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Website Tutorial</a></li>
+                            <li><a href="#">Accessibility</a></li>
+                            <li><a href="#">Disclaimer</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">FAQs</a></li>
+                            <li><a href="#">Webmaster</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <!--Column1-->
+                    <div class="footer-pad">
+                        <h4 class="footertitle">Popular Departments</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Parks and Recreation</a></li>
+                            <li><a href="#">Public Works</a></li>
+                            <li><a href="#">Police Department</a></li>
+                            <li><a href="#">Fire</a></li>
+                            <li><a href="#">Mayor and City Council</a></li>
+                            <li>
+                                <a href="#"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <!--Footer Bottom-->
+                    <p class="text-xs-center">&copy; Copyright 2017 - City of USA. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+</body>
+
+<!--ALL SCRIPTS GO HERE-->
+
+<script>
+
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').focus()
+    })
+
+</script>
+
+<script src="js/scrollspyjs.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+
+</html>
