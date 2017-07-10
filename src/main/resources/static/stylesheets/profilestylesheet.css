@@ -22,6 +22,22 @@ body, html {
     margin: 0px;
 }
 
+/* NAV BAR STARTS HERE */
+
+
+.bg-faded {
+    background-color: #ffffff;
+    border-radius: 0px;
+    padding: 15px;
+    -webkit-box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.45);
+    -moz-box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.45);
+    box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.45);
+}
+
+
+
+/* NAV BAR STYLING ENDS HERE*/
+
 h4 {
     margin-top: 10px;
     text-align: center;
