@@ -291,6 +291,12 @@ footer a:hover{
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
     padding: 2em;
 }
+
+.footer-row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
 /*.footer-top{*/
     /*background: #0d583f;*/
 /*}*/

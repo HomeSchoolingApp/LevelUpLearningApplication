@@ -257,3 +257,8 @@ footer a:hover {
 .footertitle {
     color: #000;
 }
+
+.footer-row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
