@@ -32,7 +32,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="firstname" id="firstname"  placeholder="Enter your first name." th:field="*{firstName}" />
+                            <input type="text" class="form-control" name="firstname" id="firstname"  placeholder="Enter your first name." th:field="*{firstName}" required="required" />
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="lastName" id="lastName"  placeholder="Enter your last name." th:field="*{lastName}" />
+                            <input type="text" class="form-control" name="lastName" id="lastName"  placeholder="Enter your last name." th:field="*{lastName}" required="required" />
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="email" id="email"  placeholder="Enter your email." th:field="*{email}" />
+                            <input type="email" class="form-control" name="email" id="email"  placeholder="Enter your email." th:field="*{email}" required="required" />
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="username" id="username"  placeholder="Enter your username." th:field="*{username}" />
+                            <input type="text" class="form-control" name="username" id="username"  placeholder="Enter your username." th:field="*{username}" required="required" />
                         </div>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="password" id="password"  placeholder="Enter your password." th:field="*{password}" />
+                            <input type="text" class="form-control" name="password" id="password"  placeholder="Enter your password." th:field="*{password}" required="required" />
                         </div>
                     </div>
                 </div>

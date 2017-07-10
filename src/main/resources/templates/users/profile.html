@@ -42,7 +42,7 @@
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" />
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
 
@@ -70,7 +70,7 @@
                 <input id="gender" class="form-control" th:field="*{gender}"/>
 
                 <label for="phoneNumber">Phone Number</label>
-                <input id="phoneNumber" class="form-control" th:field="*{phone_number}"/>
+                <input id="phoneNumber" class="form-control" th:field="*{phoneNumber}"/>
 
                 <label for="emailAddress">Email Address</label>
                 <input id="emailAddress" class="form-control" th:field="*{email}"/>
@@ -88,54 +88,57 @@
 
                 <!-- The following pertain only to the parent profile and request information about the student -->
 
-                <h2>Tell us about your student</h2>
+                <!--<h2>Tell us about your student</h2>-->
 
-                <label for="studentName">Name</label>
-                <input id="studentName" class="form-control" th:field="*{studentName}"/>
+                <!--<label for="studentName">Name</label>-->
+                <!--<input id="studentName" class="form-control" th:field="*{studentName}"/>-->
 
-                <label for="dob">Age</label>  <!-- date of birth to be displayed as age number not date format -->
-                <input id="dob" class="form-control" th:field="*{dob}"/>
+                <!--<label for="dob">Age</label>  &lt;!&ndash; date of birth to be displayed as age number not date format &ndash;&gt;-->
+                <!--<input id="dob" class="form-control" th:field="*{dob}"/>-->
 
-                <label for="eduLevel">Grade Level</label>
-                <input id="eduLevel" class="form-control" th:field="*{eduLevel}"/>
+                <!--<label for="eduLevel">Grade Level</label>-->
+                <!--<input id="eduLevel" class="form-control" th:field="*{eduLevel}"/>-->
 
-                <label for="studentGender">Gender</label>
-                <input id="studentGender" class="form-control" th:field="*{studentGender}"/>
+                <!--<label for="studentGender">Gender</label>-->
+                <!--<input id="studentGender" class="form-control" th:field="*{studentGender}"/>-->
 
-                <label for="subjects">Subjects Needed</label>
-                <input id="subjects" class="form-control" th:field="*{subjects}"/>
+                <!--<label for="subjects">Subjects Needed</label>-->
+                <!--<input id="subjects" class="form-control" th:field="*{subjects}"/>-->
 
 
                 <!-- The following pertain only to the teacher profile -->
 
+                <div class="teacherStuff" sec:authorize="hasRole('TEACHER')">
                 <h2>Teacher</h2>
 
                 <label for="subjects">Subjects</label>
                 <input id="subjects" class="form-control" th:field="*{subjects}" />
 
                 <label for="language">Language</label>
-                <input id="language" class="form-control" th:field="*{language}">
+                <input id="language" class="form-control" th:field="*{language}" />
 
-                <label for="resume">Resume</label>
-                <input id="resume" class="form-control" th:field="*{resume}" />
+                <!--<label for="resume">Resume</label>-->
+                <!--<input id="resume" class="form-control" th:field="*{resume}" />-->
 
                 <label for="references">References</label>
                 <input id="references" class="form-control" th:field="*{references}" />
 
                 <label for="education">Education</label>
-                <input id="education" class="form-control" th:field="*{education}" />
+                <input id="education" class="form-control" th:field="*{eduLevel}" />
 
                 <label for="certifications">Certifications</label>
-                <input id="certifications" class="form-control" th:field="*{certifications}" />
+                <input id="certifications" class="form-control" th:field="*{certification}" />
 
                 <label for="profSum">Professional Summary</label>
                 <input id="profSum" class="text" th:field="*{profSum}" />
-
+        </div>
 
                 <!--  Teacher -->
 
                 <input class="btn" type="Update" />
             </form>
+
+
         </div>
     </div>
 </div>
