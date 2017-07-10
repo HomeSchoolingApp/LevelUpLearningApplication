@@ -273,6 +273,7 @@ img {
 
 footer{
     color: #549830;
+    text-align: center;
 }
 footer a{
     color: #549830;
@@ -323,28 +324,3 @@ footer a:hover{
     margin-right: 0px;
     width: 100%;
 }
-
-/* LOGIN FORM STYLING STARTS HERE */
-
-/*.loginformcontainer {*/
-    /*height: 100%;*/
-    /*background: #d2ff52; !* Old browsers *!*/
-    /*background: -moz-radial-gradient(center, ellipse cover, #d2ff52 11%, #d2ff52 11%, #91e842 100%); !* FF3.6-15 *!*/
-    /*background: -webkit-radial-gradient(center, ellipse cover, #d2ff52 11%,#d2ff52 11%,#91e842 100%); !* Chrome10-25,Safari5.1-6 *!*/
-    /*background: radial-gradient(ellipse at center, #d2ff52 11%,#d2ff52 11%,#91e842 100%); !* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ *!*/
-    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#91e842',GradientType=1 ); !* IE6-9 fallback on horizontal gradient *!*/
-    /*background-position: center;*/
-    /*background-repeat: no-repeat;*/
-    /*background-size: cover;*/
-    /*position: relative;*/
-/*}*/
-
-/*.loginform {*/
-    /*background: #FFFFFF;*/
-    /*margin: 100px;*/
-    /*padding: 100px;*/
-
-/*}*/
-
-
-
