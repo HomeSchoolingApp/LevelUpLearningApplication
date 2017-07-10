@@ -13,30 +13,56 @@
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://use.fontawesome.com/4a71ee3d99.js"></script>
-    <link rel="stylesheet" href="stylesheets/stylesheet.css"/>
+    <link rel="stylesheet" href="stylesheets/formstylesheet.css"/>
 
 </head>
 <body>
 
-<div class="loginformcontainer">
-        <h1>Log In</h1>
-        <div class="loginform">
-        <div th:if="${param.error}">
-            Invalid Username and Password.
-        </div>
-        <div th:if="${param.logout}">
-            You have been logged out.
-        </div>
+<div class="container">
+    <div class="row main">
+        <div class="main-login main-center">
+            <h4>LOGIN</h4>
+            <div class="loginform">
+                <div th:if="${param.error}">
+                    Invalid Username and Password.
+                </div>
+                <div th:if="${param.logout}">
+                    You have been logged out.
+                </div>
+            <hr/>
+            <form class="formedits" method="POST" th:action="@{/login}">
 
-        <form th:action="@{/login}" method="post">
-            <label for="username">Username</label>
-            <input id="username" name="username" type="text"/>
-            <label for="password">Password</label>
-            <input id="password" name="password" type="password"/>
-            <input type="submit" value="Log In"/>
-        </form>
+                <div class="form-group">
+                    <label for="username" class="cols-sm-2 control-label">Username</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="username" id="username"  placeholder="Enter your username"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="cols-sm-2 control-label">Password</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="password" id="password"  placeholder="Enter your password"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <input type="submit" class="btn btn-success" value="LOGIN" />
+                </div>
+
+            </form>
+        </div>
     </div>
 </div>
+</div>
+
+
 
 <!-- FOOTER STARTS HERE -->
 
