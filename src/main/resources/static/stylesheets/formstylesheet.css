@@ -81,6 +81,27 @@ input::-webkit-input-placeholder {
     margin-bottom: 40px;
 }
 
+.ws-errorbox p {
+    margin: 2px 0 3px;
+    padding: 0;
+    color: #f35b59;
+    text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.60);
+}
+
+.has-success .form-control {
+    border-color: #d2ff52;
+}
+
+.has-success .input-group-addon {
+    color: #d2ff52;
+    border-color: #d2ff52;
+    background-color: #eaf6ea;
+}
+
+.form-group >[class*="col-"] + .ws-errorbox {
+    padding: 0 15px;
+}
+
 .input-group {
     -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.21) !important;
     -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.21) !important;
@@ -153,8 +174,8 @@ span.input-group-addon i {
 }
 
 .error {
-    color: red;
-    text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.35);
+    color: #f35b59;
+    text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.60);
 }
 
 .btn-link {
