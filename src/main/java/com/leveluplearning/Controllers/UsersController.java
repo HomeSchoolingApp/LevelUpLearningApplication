@@ -56,4 +56,9 @@ public class UsersController {
         return "users/profile";
     }
 
+    @GetMapping("/terms")
+    public String showTermsOfUse() {
+        return "termsOfUse";
+    }
+
 }
