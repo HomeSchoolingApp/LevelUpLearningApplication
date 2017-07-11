@@ -59,9 +59,16 @@ public class UsersController {
         return "redirect:/login";
     }
 
-
     @GetMapping("/profile")
-    public String showParentProfile(Model model) {
+    public String showProfile(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", user);
+        return "users/index";
+    }
+
+
+    @GetMapping("/updateprofile")
+    public String showProfileEditForm(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", user);
         model.addAttribute("subjects", subjectsDao.findAll());
