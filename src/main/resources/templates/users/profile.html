@@ -43,7 +43,7 @@
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" />
+            <input class="form-control mr-sm-2" type="text" placeholder="Search"/>
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
 
@@ -53,9 +53,10 @@
 <div class="container">
     <div class="row main">
         <div class="main-login main-center">
-        <h4>My Profile</h4>
+            <h4>My Profile</h4>
             <hr/>
-            <form class="formedits" th:action="@{/profile}" th:method="POST" th:object="${user}" enctype="multipart/form-data">
+            <form class="formedits" th:action="@{/profile}" th:method="POST" th:object="${user}"
+                  enctype="multipart/form-data">
 
                 <label for="file">Picture</label>
                 <input id="file" type="file" class="file" th:field="*{imgUrl}"/>
@@ -65,7 +66,8 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="firstName" id="firstName" th:field="*{firstName}" />
+                            <input type="text" class="form-control" name="firstName" id="firstName"
+                                   th:field="*{firstName}"/>
                         </div>
                     </div>
                 </div>
@@ -75,7 +77,8 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="lastName" id="lastName"  th:field="*{lastName}" />
+                            <input type="text" class="form-control" name="lastName" id="lastName"
+                                   th:field="*{lastName}"/>
                         </div>
                     </div>
                 </div>
@@ -84,8 +87,9 @@
                     <label for="gender" class="cols-sm-2 control-label">Gender</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-genderless fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="gender" id="gender"  th:field="*{gender}" />
+                            <span class="input-group-addon"><i class="fa fa-genderless fa"
+                                                               aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="gender" id="gender" th:field="*{gender}"/>
                         </div>
                     </div>
                 </div>
@@ -95,7 +99,8 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-mobile fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="phoneNumber" id="phoneNumber"  th:field="*{phoneNumber}" />
+                            <input type="text" class="form-control" name="phoneNumber" id="phoneNumber"
+                                   th:field="*{phoneNumber}"/>
                         </div>
                     </div>
                 </div>
@@ -105,7 +110,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="email" id="email"  th:field="*{email}" />
+                            <input type="text" class="form-control" name="email" id="email" th:field="*{email}"/>
                         </div>
                     </div>
                 </div>
@@ -114,8 +119,9 @@
                     <label for="city" class="cols-sm-2 control-label">City</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-map-marker fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="city" id="city"  th:field="*{city}" />
+                            <span class="input-group-addon"><i class="fa fa-map-marker fa"
+                                                               aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="city" id="city" th:field="*{city}"/>
                         </div>
                     </div>
                 </div>
@@ -124,8 +130,9 @@
                     <label for="state" class="cols-sm-2 control-label">State</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-map-marker fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="state" id="state"  th:field="*{state}" />
+                            <span class="input-group-addon"><i class="fa fa-map-marker fa"
+                                                               aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="state" id="state" th:field="*{state}"/>
                         </div>
                     </div>
                 </div>
@@ -136,8 +143,9 @@
                     <label for="aboutMe" class="cols-sm-2 control-label">About Me</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-pencil-square fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="aboutMe" id="aboutMe"  th:field="*{aboutMe}" />
+                            <span class="input-group-addon"><i class="fa fa-pencil-square fa"
+                                                               aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="aboutMe" id="aboutMe" th:field="*{aboutMe}"/>
                         </div>
                     </div>
                 </div>
@@ -165,14 +173,17 @@
                 <!-- The following pertain only to the teacher profile -->
 
                 <div class="teacherStuff" sec:authorize="hasRole('TEACHER')">
-                <h4>Teacher Information</h4>
+                    <h4>Teacher Information</h4>
                     <hr/>
                     <div class="form-group">
                         <label for="subjects" class="cols-sm-2 control-label">Subjects</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-book fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="subjects" id="subjects"  th:field="*{subjects}" />
+                                <select multiple="multiple" name="subjects" id="subjects" class="form-control">
+                                    <option th:each="subject: ${subjects}" th:value="${subject.id}"
+                                            th:text="${subject.name}"></option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -182,21 +193,24 @@
                         <label for="language" class="cols-sm-2 control-label">Languages</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-language fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="language" id="language"  th:field="*{language}" />
+                                <span class="input-group-addon"><i class="fa fa-language fa"
+                                                                   aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="language" id="language"
+                                       th:field="*{language}"/>
                             </div>
                         </div>
                     </div>
 
-                <!--<label for="resume">Resume</label>-->
-                <!--<input id="resume" class="form-control" th:field="*{resume}" />-->
+                    <!--<label for="resume">Resume</label>-->
+                    <!--<input id="resume" class="form-control" th:field="*{resume}" />-->
 
                     <div class="form-group">
                         <label for="references" class="cols-sm-2 control-label">References</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="references" id="references"  th:field="*{references}" />
+                                <input type="text" class="form-control" name="references" id="references"
+                                       th:field="*{references}"/>
                             </div>
                         </div>
                     </div>
@@ -206,7 +220,8 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-book fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="education" id="education"  th:field="*{eduLevel}" />
+                                <input type="text" class="form-control" name="education" id="education"
+                                       th:field="*{eduLevel}"/>
                             </div>
                         </div>
                     </div>
@@ -216,7 +231,8 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-certificate fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="certifications" id="certifications"  th:field="*{certification}" />
+                                <input type="text" class="form-control" name="certifications" id="certifications"
+                                       th:field="*{certification}"/>
                             </div>
                         </div>
                     </div>
@@ -225,15 +241,17 @@
                         <label for="profSum" class="cols-sm-2 control-label">Professional Summary</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-pencil-square fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="profSum" id="profSum"  th:field="*{profSum}" />
+                                <span class="input-group-addon"><i class="fa fa-pencil-square fa"
+                                                                   aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="profSum" id="profSum"
+                                       th:field="*{profSum}"/>
                             </div>
                         </div>
                     </div>
-        </div>
+                </div>
 
                 <div class="form-group ">
-                    <input type="submit" class="btn btn-success" value="UPDATE" />
+                    <input type="submit" class="btn btn-success" value="UPDATE"/>
                 </div>
             </form>
 

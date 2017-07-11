@@ -17,6 +17,9 @@ public class Subject {
     @Column(name = "name")
     private String name;
 
+    public Subject() {
+    }
+
     public Subject(String name) {
         this.name = name;
     }
