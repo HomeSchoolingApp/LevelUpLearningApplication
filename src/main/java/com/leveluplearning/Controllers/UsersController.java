@@ -5,16 +5,22 @@ import com.leveluplearning.models.UserRoles;
 import com.leveluplearning.models.UsersWithRoles;
 import com.leveluplearning.repositories.Roles;
 import com.leveluplearning.repositories.SubjectsRepo;
+import com.leveluplearning.repositories.TeacherRepo;
 import com.leveluplearning.repositories.UsersRepo;
+import org.apache.catalina.security.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.social.connect.ConnectionKey;
+import org.springframework.social.connect.UserProfile;
+import org.springframework.social.connect.web.ProviderSignInUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
+
+import java.sql.Connection;
+import java.util.logging.Logger;
 
 /**
  * Created by daniel on 7/6/17.
@@ -31,6 +37,7 @@ public class UsersController {
 
     @Autowired
     SubjectsRepo subjectsDao;
+    TeacherRepo teacherDao;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -61,9 +68,15 @@ public class UsersController {
         return "users/profile";
     }
 
+    @GetMapping("/teachers")
+    public String viewAll(Model model) {
+        Iterable<User> users = teacherDao.findAllTeachers();
+        model.addAttribute("teachers", users);
+        return "views/viewAllTeacherProfiles";
+    }
+
     @GetMapping("/terms")
     public String showTermsOfUse() {
         return "termsOfUse";
     }
-
 }
