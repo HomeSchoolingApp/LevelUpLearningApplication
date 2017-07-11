@@ -72,7 +72,7 @@
         <h2>City: <span th:text="${teacher.city}"></span></h2>
         <h2>State: <span th:text="${teacher.state}"></span></h2>
         <h2>Language: <span th:text="${teacher.language}"></span></h2>
-        <h2>References: <span th:text="${teacher.references}"></span></h2>
+        <h2>References: <span th:each="reference:${teacher.references}" th:text="${reference.fullName}"></span></h2>
         <h2>Certification: <span th:text="${teacher.certification}"></span></h2>
         <h2>Professional Summary: <span th:text="${teacher.profSum}"></span></h2>
 

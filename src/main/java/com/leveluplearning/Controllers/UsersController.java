@@ -19,6 +19,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
+import javax.servlet.annotation.MultipartConfig;
+import java.nio.file.Files;
 import java.sql.Connection;
 import java.util.logging.Logger;
 
@@ -37,6 +39,8 @@ public class UsersController {
 
     @Autowired
     SubjectsRepo subjectsDao;
+
+    @Autowired
     TeacherRepo teacherDao;
 
     @Autowired
@@ -61,7 +65,8 @@ public class UsersController {
 
     @GetMapping("/profile")
     public String showProfile(Model model) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = usersDao.findByUsername(loggedInUser.getUsername());
         model.addAttribute("user", user);
         return "users/index";
     }
@@ -69,14 +74,39 @@ public class UsersController {
 
     @GetMapping("/updateprofile")
     public String showProfileEditForm(Model model) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = usersDao.findByUsername(loggedInUser.getUsername());
         model.addAttribute("user", user);
         model.addAttribute("subjects", subjectsDao.findAll());
         return "users/profile";
     }
 
+    @PostMapping("/updateprofile/{id}")
+    public String ProfileEditForm(@ModelAttribute User user, @PathVariable Long id) {
+        User editedUser = usersDao.findOne(id);
+        editedUser.setAboutMe(user.getAboutMe());
+        editedUser.setCertification(user.getCertification());
+        editedUser.setCity(user.getCity());
+        editedUser.setDob(user.getDob());
+        editedUser.setEduLevel(user.getEduLevel());
+        editedUser.setEmail(user.getEmail());
+        editedUser.setFirstName(user.getFirstName());
+        editedUser.setLastName(user.getLastName());
+        editedUser.setGender(user.getGender());
+        editedUser.setLanguage(user.getLanguage());
+        editedUser.setPhoneNumber(user.getPhoneNumber());
+        editedUser.setProfSum(user.getProfSum());
+        editedUser.setReferences(user.getReferences());
+        editedUser.setState(user.getState());
+        editedUser.setSubjects(user.getSubjects());
+
+        usersDao.save(editedUser);
+
+        return "redirect:/profile";
+    }
+
     @GetMapping("/teachers")
-    public String viewAll(Model model) {
+    public String viewAllTeachers(Model model) {
         Iterable<User> users = teacherDao.findAllTeachers();
         model.addAttribute("teachers", users);
         return "views/viewAllTeacherProfiles";

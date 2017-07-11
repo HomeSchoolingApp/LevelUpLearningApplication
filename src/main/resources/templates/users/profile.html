@@ -55,11 +55,11 @@
         <div class="main-login main-center">
             <h4>My Profile</h4>
             <hr/>
-            <form class="formedits" th:action="@{/profile}" th:method="POST" th:object="${user}"
-                  enctype="multipart/form-data">
+            <form class="formedits" th:action="@{'/updateprofile/' + ${user.id}}" th:method="POST" th:object="${user}">
 
-                <label for="file">Picture</label>
-                <input id="file" type="file" class="file" th:field="*{imgUrl}"/>
+                <!--<label for="file">Picture</label>-->
+                <!--<input id="file" type="file" class="file" th:field="*{imgUrl}"/>-->
+
 
                 <div class="form-group">
                     <label for="firstName" class="cols-sm-2 control-label">First Name</label>
