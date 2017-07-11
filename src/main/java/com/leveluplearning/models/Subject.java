@@ -7,18 +7,18 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "subject")
+@Table(name = "subjects")
 public class Subject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "subject")
-    private String subject;
+    @Column(name = "name")
+    private String name;
 
-    public Subject(String subject) {
-        this.subject = subject;
+    public Subject(String name) {
+        this.name = name;
     }
 
     public long getId() {
@@ -29,11 +29,11 @@ public class Subject {
         this.id = id;
     }
 
-    public String getSubject() {
-        return subject;
+    public String getName() {
+        return name;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setName(String name) {
+        this.name = name;
     }
 }
