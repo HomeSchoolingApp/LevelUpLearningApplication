@@ -269,6 +269,15 @@ img {
     transition: 0.5s;
 }
 
+/* JUMBOTRON STYLING GOES HERE */
+
+.jumbotron {
+    padding: 4rem 2rem;
+    border-radius: 0px;
+}
+
+/* JUMBOTRON STYLING ENDS HERE */
+
 
 /* FOOTER CSS GOES BELOW HERE */
 

@@ -72,5 +72,8 @@ public class UsersController {
         return "views/viewAllTeacherProfiles";
     }
 
-
+    @GetMapping("/terms")
+    public String showTermsOfUse() {
+        return "termsOfUse";
+    }
 }
