@@ -299,6 +299,12 @@ img {
     height: 100%;
 }
 
+.lead {
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
 /* PROFILE INDEX STYLING ENDS HERE */
 
 
