@@ -269,7 +269,7 @@ img {
     transition: 0.5s;
 }
 
-/* JUMBOTRON STYLING GOES HERE */
+/* JUMBOTRON STYLING FOR TERMS GOES HERE */
 
 .jumbotron {
     padding: 4rem 2rem;
@@ -277,6 +277,23 @@ img {
 }
 
 /* JUMBOTRON STYLING ENDS HERE */
+
+/* PROFILE INDEX STYLING GOES HERE */
+
+.container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+#profilebackground {
+    height: 100%;
+}
+
+/* PROFILE INDEX STYLING ENDS HERE */
+
+
 
 
 /* FOOTER CSS GOES BELOW HERE */
