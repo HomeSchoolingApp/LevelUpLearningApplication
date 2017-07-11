@@ -4,6 +4,7 @@ import com.leveluplearning.models.User;
 import com.leveluplearning.models.UserRoles;
 import com.leveluplearning.models.UsersWithRoles;
 import com.leveluplearning.repositories.Roles;
+import com.leveluplearning.repositories.SubjectsRepo;
 import com.leveluplearning.repositories.TeacherRepo;
 import com.leveluplearning.repositories.UsersRepo;
 import org.apache.catalina.security.SecurityUtil;
@@ -35,6 +36,7 @@ public class UsersController {
     Roles rolesDao;
 
     @Autowired
+    SubjectsRepo subjectsDao;
     TeacherRepo teacherDao;
 
     @Autowired
@@ -62,6 +64,7 @@ public class UsersController {
     public String showParentProfile(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", user);
+        model.addAttribute("subjects", subjectsDao.findAll());
         return "users/profile";
     }
 
