@@ -11,7 +11,6 @@
     <link rel="icon" href="image/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://use.fontawesome.com/4a71ee3d99.js"></script>
     <link rel="stylesheet" href="stylesheets/formstylesheet.css"/>
 
@@ -23,21 +22,21 @@
         <div class="main-login main-center">
             <h4>LOGIN</h4>
             <div class="loginform">
-                <div th:if="${param.error}">
+                <div class="error" th:if="${param.error}">
                     Invalid Username and Password.
                 </div>
-                <div th:if="${param.logout}">
+                <div class="error" th:if="${param.logout}">
                     You have been logged out.
                 </div>
             <hr/>
-            <form class="formedits" method="POST" th:action="@{/login}">
+            <form class="formedits ws-validate" method="POST" th:action="@{/login}">
 
                 <div class="form-group">
                     <label for="username" class="cols-sm-2 control-label">Username</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="username" id="username"  placeholder="Enter your username"/>
+                            <input type="text" class="form-control" name="username" id="username"  placeholder="Enter your username" required="required" />
                         </div>
                     </div>
                 </div>
@@ -47,7 +46,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="password" id="password"  placeholder="Enter your password"/>
+                            <input type="password" class="form-control" name="password"  id="password"  placeholder="Enter your password" required="required" />
                         </div>
                     </div>
                 </div>
@@ -56,10 +55,37 @@
                     <input type="submit" class="btn btn-success" value="LOGIN" />
                 </div>
 
+                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#parentOrTeacher">Not A Member? Not A Problem!
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="parentOrTeacher" tabindex="-1" role="dialog" aria-labelledby="parentOrTeacherLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header text-center">
+                                <h5 class="modal-title" id="parentOrTeacherLabel">Hello, &amp; Thank You For Your
+                                    Registration!</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Would you like to register as a parent or teacher?
+                            </div>
+                            <div class="modal-footer">
+                                <a href="/register?q=ROLE_PARENT" class="btn btn-success" role="button" aria-pressed="true">PARENT</a>
+                                <a href="/register?q=ROLE_TEACHER" class="btn btn-success" role="button" aria-pressed="true">TEACHER</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--END MODAL DIV-->
+
             </form>
         </div>
     </div>
-</div>
 </div>
 
 
@@ -71,7 +97,7 @@
     </div>
     <div class="footer-middle">
         <div class="container">
-            <div class="row">
+            <div class="row footer-row">
                 <div class="col-md-3 col-sm-6">
                     <!--Column1-->
                     <div class="footer-pad">
@@ -149,10 +175,39 @@
         </div>
     </div>
 </footer>
+</div>
 
 </body>
 
-<script src="js/scrollspyjs.js"></script>
+<script src="js/js-webshim/minified/polyfiller.js"></script>
+
+<script>
+    (function () {
+        webshim.setOptions('forms', {
+            lazyCustomMessages: true,
+            iVal: {
+                sel: '.ws-validate',
+                handleBubble: 'hide', // hide error bubble
+
+                //add bootstrap specific classes
+                errorMessageClass: 'help-block',
+                successWrapperClass: 'has-success',
+                errorWrapperClass: 'has-error',
+
+                //add config to find right wrapper
+                fieldWrapper: '.form-group'
+            }
+        });
+
+        //load forms polyfill + iVal feature
+        webshim.polyfill('forms');
+    })();
+</script>
+
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
         integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
         crossorigin="anonymous"></script>

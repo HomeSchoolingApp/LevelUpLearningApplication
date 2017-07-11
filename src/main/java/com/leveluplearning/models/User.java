@@ -285,4 +285,20 @@ public class User {
     public void setPhoneNumber(Long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+    public List<Subject> getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(List<Subject> subjects) {
+        this.subjects = subjects;
+    }
+
+    public List<Reference> getReferences() {
+        return references;
+    }
+
+    public void setReferences(List<Reference> references) {
+        this.references = references;
+    }
 }

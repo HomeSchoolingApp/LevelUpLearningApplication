@@ -2,36 +2,213 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
+<!--HEAD & STYLESHEETS-->
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1"/>
+    <title>Register</title>
+    <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="image/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+    <script src="https://use.fontawesome.com/4a71ee3d99.js"></script>
+    <link rel="stylesheet" href="stylesheets/formstylesheet.css"/>
+
+</head>
 <body>
 
 <div class="container">
-    <div class="row">
-        <h1>Register</h1>
-        <div class="col l8 offset-l2">
-            <form th:action="@{/users/register}" th:method="POST" th:object="${user}">
+    <div class="row main">
+        <div class="main-login main-center">
+            <h4>REGISTER</h4>
+            <hr/>
+            <form class="formedits ws-validate" th:action="@{/users/register}" th:method="POST" th:object="${user}">
 
                 <input type="hidden" name="role" th:value="${param.q[0]}" />
 
-                <label for="firstName">First Name</label>
-                <input id="firstName" class="form-control" th:field="*{firstName}" />
+                <div class="form-group">
+                    <label for="firstname" class="cols-sm-2 control-label">First Name</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="firstname" id="firstname"  placeholder="Enter your first name." th:field="*{firstName}" required="required" />
+                        </div>
+                    </div>
+                </div>
 
-                <label for="lastName">Last Name</label>
-                <input id="lastName" class="form-control" th:field="*{lastName}" />
+                <div class="form-group">
+                    <label for="lastName" class="cols-sm-2 control-label">Last Name</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="lastName" id="lastName"  placeholder="Enter your last name." th:field="*{lastName}" required="required" />
+                        </div>
+                    </div>
+                </div>
 
-                <label for="email">Email</label>
-                <input id="email" class="form-control" th:field="*{email}" />
+                <div class="form-group">
+                    <label for="email" class="cols-sm-2 control-label">Email</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            <input type="email" class="form-control" name="email" id="email"  placeholder="Enter your email." th:field="*{email}" required="required" />
+                        </div>
+                    </div>
+                </div>
 
-                <label for="username">Username</label>
-                <input id="username" class="form-control" th:field="*{username}" />
+                <div class="form-group">
+                    <label for="username" class="cols-sm-2 control-label">Username</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="username" id="username"  placeholder="Enter your username." th:field="*{username}" required="required" />
+                        </div>
+                    </div>
+                </div>
 
-                <label for="password">Password</label>
-                <input id="password" type="password" class="form-control" th:field="*{password}" />
+                <div class="form-group">
+                    <label for="password" class="cols-sm-2 control-label">Password</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" name="password" id="password"  placeholder="Enter your password." th:field="*{password}" required="required" />
+                        </div>
+                    </div>
+                </div>
 
-                <input class="btn" type="submit" />
+                <div class="form-group ">
+                    <input type="submit" class="btn btn-success" value="REGISTER" />
+                </div>
             </form>
         </div>
     </div>
+
+
+
+<!-- FOOTER STARTS HERE -->
+
+<footer class="mainfooter" role="contentinfo">
+    <div class="footer-top p-y-2">
+    </div>
+    <div class="footer-middle">
+        <div class="container">
+            <div class="row footer-row">
+                <div class="col-md-3 col-sm-6">
+                    <!--Column1-->
+                    <div class="footer-pad">
+                        <h4 class="footertitle">Address</h4>
+                        <address>
+                            <ul class="list-unstyled">
+                                <li>
+                                    Codeup<br/>
+                                    600 Navarro St #350<br/>
+                                    San Antonio, TX<br/>
+                                    78205<br/>
+                                </li>
+                                <li>
+                                    Phone: (210) 555-5555
+                                </li>
+                            </ul>
+                        </address>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <!--Column1-->
+                    <div class="footer-pad">
+                        <h4 class="footertitle">Popular Services</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#"></a></li>
+                            <li><a href="#">Payment Center</a></li>
+                            <li><a href="#">Contact Directory</a></li>
+                            <li><a href="#">Forms</a></li>
+                            <li><a href="#">News and Updates</a></li>
+                            <li><a href="#">FAQs</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <!--Column1-->
+                    <div class="footer-pad">
+                        <h4 class="footertitle">Website Information</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Website Tutorial</a></li>
+                            <li><a href="#">Accessibility</a></li>
+                            <li><a href="#">Disclaimer</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">FAQs</a></li>
+                            <li><a href="#">Webmaster</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <!--Column1-->
+                    <div class="footer-pad">
+                        <h4 class="footertitle">Popular Departments</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Parks and Recreation</a></li>
+                            <li><a href="#">Public Works</a></li>
+                            <li><a href="#">Police Department</a></li>
+                            <li><a href="#">Fire</a></li>
+                            <li><a href="#">Mayor and City Council</a></li>
+                            <li>
+                                <a href="#"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <!--Footer Bottom-->
+                    <p class="text-xs-center">&copy; Copyright 2017 - City of USA. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 </div>
 
 </body>
+
+<script src="js/js-webshim/minified/polyfiller.js"></script>
+
+<script>
+    (function () {
+        webshim.setOptions('forms', {
+            lazyCustomMessages: true,
+            iVal: {
+                sel: '.ws-validate',
+                handleBubble: 'hide', // hide error bubble
+
+                //add bootstrap specific classes
+                errorMessageClass: 'help-block',
+                successWrapperClass: 'has-success',
+                errorWrapperClass: 'has-error',
+
+                //add config to find right wrapper
+                fieldWrapper: '.form-group'
+            }
+        });
+
+        //load forms polyfill + iVal feature
+        webshim.polyfill('forms');
+    })();
+</script>
+
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </html>
