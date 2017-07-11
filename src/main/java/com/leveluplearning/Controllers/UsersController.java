@@ -35,9 +35,6 @@ public class UsersController {
     Roles rolesDao;
 
     @Autowired
-    TeacherRepo teacherDao;
-
-    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @PostMapping("/users/register")
@@ -63,13 +60,6 @@ public class UsersController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", user);
         return "users/profile";
-    }
-
-    @GetMapping("/teachers")
-    public String viewAll(Model model) {
-        Iterable<User> users = teacherDao.findAllTeachers();
-        model.addAttribute("teachers", users);
-        return "views/viewAllTeacherProfiles";
     }
 
     @GetMapping("/terms")
