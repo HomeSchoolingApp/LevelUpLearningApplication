@@ -50,7 +50,49 @@
 </nav>
 
 <body>
+    <div class="container left">
+        <h1>Teachers</h1>
+        <br/>
 
+            <div th:each="teacher : ${teachers}" class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img src="  " class="media-object" height="64px" width="64px"/><!--th:src="${image.path}"-->
+                    </a>
+                </div>
+                <div class="media-body pull-left">
+                    <h4 class="media-heading pull-left"><span th:text="${teacher.firstName} + ${teacher.lastName}"></span></h4>
+                    <br/>
+                    <div class="row media-body pull-left">
+                        <div class="info">
+                            <h6 th:text="${teacher.gender}"></h6>
+                        </div>
+                        <div class="info">
+                            <h6 th:text="${teacher.email}"></h6>
+                        </div>
+                        <div class="info">
+                            <h6 th:text="${teacher.phoneNumber}"></h6>
+                        </div>
+                        <div class="info">
+                            <h6 th:text="${teacher.city}"></h6>
+                        </div>
+                        <div class="info">
+                            <h6 th:text="${teacher.state}"></h6>
+                        </div>
+                        <div class="info">
+                            <h6 th:text="${teacher.language}"></h6>
+                        </div>
+                        <div class="info">
+                            <h6 th:each="reference:${teacher.references}" th:text="${teacher.fullName}"></h6>
+                        </div>
+                        <div class="info">
+                            <h6 th:text="${teacher.certification}"></h6>
+                        </div>
+                        <p th:text="${teacher.profSum}" align="left" ></p><!--test-->
+                    </div>
+                    <br />
+                </div>
+            </div>
 <div class="container">
     <h1>Teachers</h1>
     <h2>Listing of all teachers available</h2>
@@ -75,9 +117,8 @@
         <h2>References: <span th:each="reference:${teacher.references}" th:text="${reference.fullName}"></span></h2>
         <h2>Certification: <span th:text="${teacher.certification}"></span></h2>
         <h2>Professional Summary: <span th:text="${teacher.profSum}"></span></h2>
-
     </div>
-</div>
+
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
@@ -87,5 +128,7 @@
         integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
         crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
 
 </html>
