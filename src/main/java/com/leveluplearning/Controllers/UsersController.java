@@ -77,7 +77,7 @@ public class UsersController {
         model.addAttribute("subjects", subjectsDao.findAll());
         return "users/profile";
     }
-
+  
     @PostMapping("/updateprofile/{id}")
     public String ProfileEditForm(@ModelAttribute User user, @PathVariable Long id) {
         User editedUser = usersDao.findOne(id);
@@ -108,7 +108,7 @@ public class UsersController {
         model.addAttribute("teachers", users);
         return "views/viewAllTeacherProfiles";
     }
-
+  
     @GetMapping("/terms")
     public String showTermsOfUse() {
         return "termsOfUse";
