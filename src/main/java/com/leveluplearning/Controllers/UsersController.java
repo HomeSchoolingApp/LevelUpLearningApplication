@@ -81,6 +81,10 @@ public class UsersController {
     @PostMapping("/updateprofile/{id}")
     public String ProfileEditForm(@ModelAttribute User user, @PathVariable Long id) {
         User editedUser = usersDao.findOne(id);
+
+        System.out.println(user.getSubjects());
+        System.out.println(user.getReferences());
+
         editedUser.setAboutMe(user.getAboutMe());
         editedUser.setCertification(user.getCertification());
         editedUser.setCity(user.getCity());
