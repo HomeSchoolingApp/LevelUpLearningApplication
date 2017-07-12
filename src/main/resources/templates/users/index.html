@@ -59,6 +59,13 @@
                 th:text="${user.firstName + ' ' + user.lastName}"></span></p>
         <p class="display-3">
         <h3>What Would You Like To Do?</h3></p>
+        <div class="search-functionality">
+
+            <input type="text" class="form-control ui-autocomplete-input" name="subjects" id="subjects"  th:field="*{subjects}" placeholder="Enter a Subject" data-platform="desktop" autocomplete="off"/>
+
+            <button class="search-btn">SEARCH TEACHERS</button>
+
+        </div>
         <hr class="my-4"/>
     </div>
 

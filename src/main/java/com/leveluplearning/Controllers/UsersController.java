@@ -65,6 +65,7 @@ public class UsersController {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = usersDao.findByUsername(loggedInUser.getUsername());
         model.addAttribute("user", user);
+        model.addAttribute("subjects", subjectsDao.findAll());
         return "users/index";
     }
 
