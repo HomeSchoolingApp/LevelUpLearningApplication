@@ -102,12 +102,6 @@ public class UsersController {
         return "redirect:/profile";
     }
 
-    @GetMapping("/teachers")
-    public String viewAllTeachers(Model model) {
-        Iterable<User> users = teacherDao.findAllTeachers();
-        model.addAttribute("teachers", users);
-        return "views/viewAllTeacherProfiles";
-    }
   
     @GetMapping("/terms")
     public String showTermsOfUse() {
