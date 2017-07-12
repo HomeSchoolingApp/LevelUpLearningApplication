@@ -56,12 +56,12 @@
         <div class="search-functionality">
             <h2 style="font-size:25px">What would you like to learn today?</h2>
             <div class="subject-query">
-                <input type="text" class="form-control ui-autocomplete-input" name="subjects" id="subjects"
-                       th:field="*{subjects}" placeholder="Enter a Subject" data-platform="desktop" autocomplete="off"/>
-                <option th:each="subject: ${subjects}" th:value="${subject.id}"
-                        th:text="${subject.name}"></option>
+                <select multiple="multiple" name="subjects" id="subjects" class="form-control">
+                    <option th:each="subject: ${subjects}" th:value="${subject.id}"
+                            th:text="${subject.name}"></option>
+                </select>
             </div>
-            <button class="search-btn">SEARCH TEACHERS</button>
+            <button class="search-btn">SEARCH TEACHERS by SUBJECT</button>
 
         </div>
 

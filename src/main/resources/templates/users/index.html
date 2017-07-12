@@ -60,10 +60,14 @@
         <p class="display-3">
         <h3>What Would You Like To Do?</h3></p>
         <div class="search-functionality">
+            <form class="search-form" th:action="@{/searchTeachersBySubjects}" th:method="post" >
+            <select multiple="multiple" name="subjects" id="subjects" class="form-control">
+                <option th:each="subject: ${subjects}" th:value="${subject.id}"
+                        th:text="${subject.name}"></option>
+            </select>
 
-            <input type="text" class="form-control ui-autocomplete-input" name="subjects" id="subjects"  th:field="*{subjects}" placeholder="Enter a Subject" data-platform="desktop" autocomplete="off"/>
-
-            <button class="search-btn">SEARCH TEACHERS</button>
+            <button class="search-btn">SEARCH TEACHERS by SUBJECT</button>
+            </form>
 
         </div>
         <hr class="my-4"/>
