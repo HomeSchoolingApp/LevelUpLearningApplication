@@ -13,7 +13,7 @@
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://use.fontawesome.com/4a71ee3d99.js"></script>
-    <link rel="stylesheet" href="stylesheets/stylesheet.css"/>
+    <link rel="stylesheet" th:href="@{/stylesheets/stylesheet.css}" />
 
 </head>
 
@@ -53,11 +53,11 @@
 <div class="container left">
     <div class="jumbotron" id="profilebackground">
         <h1 class="display-3">PICTURE GOES HERE</h1>
-        <p class="lead">WELCOME, <span th:text="${user.firstName + ' ' + user.lastName}"></span></p>
+        <!--<p class="lead">WELCOME, <span th:text="${user.firstName + ' ' + user.lastName}"></span></p>-->
         <p class="display-3">
         <h3>What Would You Like To Do?</h3></p>
         <hr class="my-4"/>
-        <form th:action="@{/teachers}" th:method="POST">
+        <form th:action="@{/search/teachers}" th:method="POST">
             <input type="text" name="searchTerm" placeholder="Search Teacher Name"/>
         </form>
     </div>
