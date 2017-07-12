@@ -269,6 +269,46 @@ img {
     transition: 0.5s;
 }
 
+/* JUMBOTRON STYLING FOR TERMS GOES HERE */
+
+.jumbotron {
+    padding: 4rem 2rem;
+    border-radius: 0px;
+}
+
+/* JUMBOTRON STYLING ENDS HERE */
+
+/* NAVBAR STYLING */
+
+.navbar {
+    text-align: left;
+}
+
+/* NAVBAR STYLING END */
+
+/* PROFILE INDEX STYLING GOES HERE */
+
+.container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+#profilebackground {
+    height: 100%;
+}
+
+.lead {
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+/* PROFILE INDEX STYLING ENDS HERE */
+
+
+
 
 /* FOOTER CSS GOES BELOW HERE */
 

@@ -42,7 +42,7 @@
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" />
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
 
@@ -57,9 +57,9 @@
 
     <div th:each="teacher : ${teachers}">
 
-        <div th:each="image : ${teacher.images}">
-            <img th:src="${image.path}" width="200px" height="200px" />
-        </div>
+        <!--<div th:each="image : ${teacher.images}">-->
+            <!--<img th:src="${image.path}" width="200px" height="200px" />-->
+        <!--</div>-->
 
         <!--<div th:if="${teacher.imageUrl}">-->
             <!--<img th:src="${'/uploads/' + teacher.imageUrl}" alt="" width="200" height="200" />-->
@@ -72,14 +72,9 @@
         <h2>City: <span th:text="${teacher.city}"></span></h2>
         <h2>State: <span th:text="${teacher.state}"></span></h2>
         <h2>Language: <span th:text="${teacher.language}"></span></h2>
-
-        <!--<h2>Resume: <span th:text="${teacher.resume}"></span></h2>-->
-        <!-- feature to be added at another time -->
-
-        <h2>References: <span th:text="${teacher.references}"></span></h2>
+        <h2>References: <span th:each="reference:${teacher.references}" th:text="${reference.fullName}"></span></h2>
         <h2>Certification: <span th:text="${teacher.certification}"></span></h2>
         <h2>Professional Summary: <span th:text="${teacher.profSum}"></span></h2>
-        <h2>Subjects: <span th:text="${teacher.subject}"></span></h2>
 
     </div>
 </div>
