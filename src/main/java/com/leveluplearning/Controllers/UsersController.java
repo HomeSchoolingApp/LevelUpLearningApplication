@@ -1,9 +1,6 @@
 package com.leveluplearning.Controllers;
 
-import com.leveluplearning.models.Reference;
-import com.leveluplearning.models.User;
-import com.leveluplearning.models.UserRoles;
-import com.leveluplearning.models.UsersWithRoles;
+import com.leveluplearning.models.*;
 import com.leveluplearning.repositories.*;
 import org.apache.catalina.security.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +19,7 @@ import javax.validation.Valid;
 import java.nio.file.Files;
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -133,6 +131,34 @@ public class UsersController {
 //        editedUser.setReferences(references);
 
         referencesDao.save(new Reference(editedUser, referencenames, referencephones, referencecomments));
+
+        return "redirect:/profile";
+    }
+
+    @PostMapping("/updatesubjects/{id}")
+    public String ProfileEditForm(@RequestParam(name="subjects") long[] subjectsIds, @PathVariable long id) {
+        User teacher = usersDao.findOne(id);
+
+        System.out.println(Arrays.toString(subjectsIds));
+        List<Subject> subjects = new ArrayList<>();
+        for (int i = 0; i < subjectsIds.length; i++) {
+            /*Subject subject = new Subject();
+            subject.setId(subjectsIds[i]);*/
+            Subject subject = subjectsDao.findOne(subjectsIds[i]);
+            subjects.add(subject);
+        }
+
+        teacher.setSubjects(subjects);
+
+        usersDao.save(teacher);
+
+        /*User editedUser = usersDao.findOne(id);
+
+
+
+//        editedUser.setReferences(references);
+
+        referencesDao.save(new Reference(editedUser, referencenames, referencephones));*/
 
         return "redirect:/profile";
     }
