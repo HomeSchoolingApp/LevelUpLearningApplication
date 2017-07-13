@@ -46,4 +46,13 @@ public class Subject {
     public void setName(String name) {
         this.name = name;
     }
+
+    public List<User> getTeachers(){
+        return teachers;
+    }
+
+    public void setTeachers(List<User> teachers){
+        this.teachers = teachers;
+    }
+
 }
