@@ -1,5 +1,7 @@
 package com.leveluplearning.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -24,6 +26,10 @@ public class Subject {
     public Subject() {
     }
 
+    @ManyToMany(mappedBy = "subjects", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<User> teachers;
+
     public Subject(String name) {
         this.name = name;
     }
@@ -43,4 +49,13 @@ public class Subject {
     public void setName(String name) {
         this.name = name;
     }
+
+    public List<User> getTeachers(){
+        return teachers;
+    }
+
+    public void setTeachers(List<User> teachers){
+        this.teachers = teachers;
+    }
+
 }
