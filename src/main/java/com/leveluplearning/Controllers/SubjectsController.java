@@ -40,9 +40,12 @@ public class SubjectsController {
 
         for (Subject subject: selectedSubjects) {
             // look in the list if the teacher already exists dont add it
-            teachers.addAll(subject.getTeachers());
+            for (User teacher: subject.getTeachers()){
+                if (teachers.indexOf(teacher)==-1){
+                    teachers.add(teacher);
+                }
+            }
         }
-
         model.addAttribute("teachers", teachers);
         return "views/viewAllTeacherProfiles";
     }
