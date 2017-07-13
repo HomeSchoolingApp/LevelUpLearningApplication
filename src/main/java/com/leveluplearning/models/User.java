@@ -78,7 +78,6 @@ public class User {
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "subject_id")}
     )
-
     private List<Subject> subjects;
 
     @ManyToMany(cascade = CascadeType.ALL)

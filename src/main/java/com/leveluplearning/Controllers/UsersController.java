@@ -7,6 +7,8 @@ import com.leveluplearning.repositories.Roles;
 import com.leveluplearning.repositories.SubjectsRepo;
 import com.leveluplearning.repositories.TeacherRepo;
 import com.leveluplearning.repositories.UsersRepo;
+import com.leveluplearning.models.*;
+import com.leveluplearning.repositories.*;
 import org.apache.catalina.security.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,6 +21,9 @@ import org.springframework.web.context.request.WebRequest;
 import javax.servlet.annotation.MultipartConfig;
 import java.nio.file.Files;
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -94,6 +99,7 @@ public class UsersController {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = usersDao.findByUsername(loggedInUser.getUsername());
         model.addAttribute("user", user);
+        model.addAttribute("subjects", subjectsDao.findAll());
         return "users/index";
     }
 
@@ -158,8 +164,35 @@ public class UsersController {
 
         return "redirect:/profile";
     }
-
   
+    @PostMapping("/updatesubjects/{id}")
+    public String ProfileEditForm(@RequestParam(name="subjects") long[] subjectsIds, @PathVariable long id) {
+        User teacher = usersDao.findOne(id);
+
+        System.out.println(Arrays.toString(subjectsIds));
+        List<Subject> subjects = new ArrayList<>();
+        for (int i = 0; i < subjectsIds.length; i++) {
+            /*Subject subject = new Subject();
+            subject.setId(subjectsIds[i]);*/
+            Subject subject = subjectsDao.findOne(subjectsIds[i]);
+            subjects.add(subject);
+        }
+
+        teacher.setSubjects(subjects);
+
+        usersDao.save(teacher);
+
+        /*User editedUser = usersDao.findOne(id);
+
+
+
+//        editedUser.setReferences(references);
+
+        referencesDao.save(new Reference(editedUser, referencenames, referencephones));*/
+
+        return "redirect:/profile";
+    }
+
     @GetMapping("/terms")
     public String showTermsOfUse() {
         return "termsOfUse";
