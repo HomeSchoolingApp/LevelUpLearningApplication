@@ -34,8 +34,8 @@ public class SubjectsController {
 
     @PostMapping("/searchTeachersBySubjects")
     public String searchTeachersBySubjects(Model model){
-        List<User> teachersBySubject = teacherDao.findAllBySubjects(1L);
-        model.addAttribute("teachers", teachersBySubject);
+//        List<User> teachersBySubject = teacherDao.findAllBySubjects(1L);
+        model.addAttribute("teachers", teacherDao.findAll());
         return "views/viewAllTeacherProfiles";
     }
 

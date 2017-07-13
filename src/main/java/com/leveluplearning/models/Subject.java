@@ -1,6 +1,9 @@
 package com.leveluplearning.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by renecortez on 7/6/17.
@@ -19,6 +22,10 @@ public class Subject {
 
     public Subject() {
     }
+
+    @ManyToMany(mappedBy = "subjects", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<User> teachers;
 
     public Subject(String name) {
         this.name = name;
