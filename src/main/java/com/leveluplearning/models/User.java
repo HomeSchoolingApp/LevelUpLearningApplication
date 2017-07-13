@@ -2,6 +2,7 @@ package com.leveluplearning.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -301,4 +302,5 @@ public class User {
     public void setReferences(List<Reference> references) {
         this.references = references;
     }
+
 }
