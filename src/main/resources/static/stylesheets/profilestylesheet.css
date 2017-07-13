@@ -97,6 +97,10 @@ label {
     margin-bottom: 15px;
 }
 
+.info {
+    margin-left: 10px;
+}
+
 input,
 input::-webkit-input-placeholder {
     font-size: 11px;

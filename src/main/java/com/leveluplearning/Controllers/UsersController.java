@@ -6,9 +6,6 @@ import org.apache.catalina.security.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.social.connect.ConnectionKey;
-import org.springframework.social.connect.UserProfile;
-import org.springframework.social.connect.web.ProviderSignInUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -82,7 +79,7 @@ public class UsersController {
         model.addAttribute("subjects", subjectsDao.findAll());
         return "users/profile";
     }
-
+  
     @PostMapping("/updateprofile/{id}")
     public String ProfileEditForm(@ModelAttribute User user, @PathVariable Long id) {
         User editedUser = usersDao.findOne(id);
@@ -134,7 +131,7 @@ public class UsersController {
 
         return "redirect:/profile";
     }
-
+  
     @PostMapping("/updatesubjects/{id}")
     public String ProfileEditForm(@RequestParam(name="subjects") long[] subjectsIds, @PathVariable long id) {
         User teacher = usersDao.findOne(id);
@@ -169,7 +166,7 @@ public class UsersController {
         model.addAttribute("teachers", users);
         return "views/viewAllTeacherProfiles";
     }
-
+  
     @GetMapping("/terms")
     public String showTermsOfUse() {
         return "termsOfUse";
