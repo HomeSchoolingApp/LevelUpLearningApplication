@@ -33,6 +33,10 @@ public class Reference {
         this.refComment = refComment;
     }
 
+    public Reference() {
+
+    }
+
     public long getId() {
         return id;
     }
