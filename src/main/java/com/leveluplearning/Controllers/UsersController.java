@@ -1,12 +1,7 @@
 package com.leveluplearning.Controllers;
 
-import com.leveluplearning.models.User;
-import com.leveluplearning.models.UserRoles;
-import com.leveluplearning.models.UsersWithRoles;
-import com.leveluplearning.repositories.Roles;
-import com.leveluplearning.repositories.SubjectsRepo;
-import com.leveluplearning.repositories.TeacherRepo;
-import com.leveluplearning.repositories.UsersRepo;
+import com.leveluplearning.models.*;
+import com.leveluplearning.repositories.*;
 import org.apache.catalina.security.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,8 +12,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
 import javax.servlet.annotation.MultipartConfig;
+import javax.validation.Valid;
 import java.nio.file.Files;
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -39,6 +38,9 @@ public class UsersController {
 
     @Autowired
     TeacherRepo teacherDao;
+
+    @Autowired
+    UsersReferences referencesDao;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -98,7 +100,63 @@ public class UsersController {
         editedUser.setState(user.getState());
         editedUser.setSubjects(user.getSubjects());
 
-        usersDao.save(editedUser);
+//        List<Reference> references = new ArrayList<>();
+//
+//        int i = 0;
+//        for (String referencename:referencenames){
+//            references.add(new Reference(editedUser ,referencename, referencephones.get(i),referencecomments.get(i)));
+//
+//            i++;
+//        }
+//
+//        userCreated.setReferences(references);
+//
+//        usersDao.save(editedUser);
+
+        return "redirect:/profile";
+    }
+
+    @PostMapping("/updatereferences/{id}")
+    public String ProfileEditForm(@ModelAttribute User user, @PathVariable Long id, @RequestParam(name = "referencefullname") String referencenames,
+                                  @RequestParam(name = "referencephone") String referencephones,
+                                  @RequestParam(name = "referencecomment") String referencecomments) {
+
+
+        User editedUser = usersDao.findOne(id);
+
+
+
+//        editedUser.setReferences(references);
+
+        referencesDao.save(new Reference(editedUser, referencenames, referencephones, referencecomments));
+
+        return "redirect:/profile";
+    }
+  
+    @PostMapping("/updatesubjects/{id}")
+    public String ProfileEditForm(@RequestParam(name="subjects") long[] subjectsIds, @PathVariable long id) {
+        User teacher = usersDao.findOne(id);
+
+        System.out.println(Arrays.toString(subjectsIds));
+        List<Subject> subjects = new ArrayList<>();
+        for (int i = 0; i < subjectsIds.length; i++) {
+            /*Subject subject = new Subject();
+            subject.setId(subjectsIds[i]);*/
+            Subject subject = subjectsDao.findOne(subjectsIds[i]);
+            subjects.add(subject);
+        }
+
+        teacher.setSubjects(subjects);
+
+        usersDao.save(teacher);
+
+        /*User editedUser = usersDao.findOne(id);
+
+
+
+//        editedUser.setReferences(references);
+
+        referencesDao.save(new Reference(editedUser, referencenames, referencephones));*/
 
         return "redirect:/profile";
     }

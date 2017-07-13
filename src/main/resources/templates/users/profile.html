@@ -25,27 +25,29 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <a class="navbar-brand" href="/">Level Up Learning</a>
+    <a class="navbar-brand" href="/profile">Level Up Learning</a>
 
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-md-0">
 
-            <li class="nav-item" sec:authorize="isAuthenticated()"><a href="#" class="nav-link">Welcome, <span
-                    sec:authentication="name">Name</span></a></li>
+            <li class="nav-item" sec:authorize="isAuthenticated()"><a href="/profile" class="nav-link"><span
+                    th:text="${user.firstName + ' ' + user.lastName}"></span></a></li>
             <li class="nav-item"><a href="/teachers" class="nav-link">View all Teachers</a></li>
             <li class="nav-item" sec:authorize="isAuthenticated()"><a href="/subjects" class="nav-link">View
                 subjects</a></li>
-            <li class="nav-item" sec:authorize="isAuthenticated()">
-                <form th:action="@{/logout}" th:method="post">
-                    <button class="nav-link btn btn-link" style="margin-top: 2px">Logout</button>
-                </form>
-            </li>
+            <!--<li class="nav-item" sec:authorize="isAuthenticated()">-->
+            <!--<form th:action="@{/logout}" th:method="post">-->
+            <!--<button class="nav-link btn btn-link" style="margin-top: 2px">Logout</button>-->
+            <!--</form>-->
+            <!--</li>-->
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search"/>
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <form th:action="@{/logout}" th:method="post" class="nav-item" sec:authorize="isAuthenticated()">
+            <button class="nav-link btn btn-link" style="margin-top: 2px">Logout</button>
         </form>
+        <div id="settingsIcon">
+            <span><a href="/updateprofile"><i class="fa fa-cogs" aria-hidden="true"></i></a></span>
+        </div>
 
     </div>
 </nav>
@@ -175,18 +177,18 @@
                 <div class="teacherStuff" sec:authorize="hasRole('TEACHER')">
                     <h4>Teacher Information</h4>
                     <hr/>
-                    <div class="form-group">
-                        <label for="subjects" class="cols-sm-2 control-label">Subjects</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-book fa" aria-hidden="true"></i></span>
-                                <select multiple="multiple" name="subjects" id="subjects" class="form-control">
-                                    <option th:each="subject: ${subjects}" th:value="${subject.id}"
-                                            th:text="${subject.name}"></option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                    <!--<div class="form-group">-->
+                    <!--<label for="subjects" class="cols-sm-2 control-label">Subjects</label>-->
+                    <!--<div class="cols-sm-10">-->
+                    <!--<div class="input-group">-->
+                    <!--<span class="input-group-addon"><i class="fa fa-book fa" aria-hidden="true"></i></span>-->
+                    <!--<select multiple="multiple" name="subjects" id="subjects" class="form-control">-->
+                    <!--<option th:each="subject: ${subjects}" th:value="${subject.id}"-->
+                    <!--th:text="${subject.name}"></option>-->
+                    <!--</select>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
 
 
                     <div class="form-group">
@@ -204,16 +206,19 @@
                     <!--<label for="resume">Resume</label>-->
                     <!--<input id="resume" class="form-control" th:field="*{resume}" />-->
 
-                    <div class="form-group">
-                        <label for="references" class="cols-sm-2 control-label">References</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="references" id="references"
-                                       th:field="*{references}"/>
-                            </div>
-                        </div>
-                    </div>
+                    <!--<form>-->
+                    <!--<div class="form-group">-->
+                    <!--<label for="references" class="cols-sm-2 control-label">References</label>-->
+                    <!--<div class="cols-sm-10">-->
+                    <!--<div class="input-group">-->
+                    <!--<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>-->
+                    <!--<input type="text" class="form-control" name="references" id="references"-->
+                    <!--th:field="*{references}"/>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</form>-->
+
 
                     <div class="form-group">
                         <label for="education" class="cols-sm-2 control-label">Education Level</label>
@@ -230,8 +235,10 @@
                         <label for="certifications" class="cols-sm-2 control-label">Certifications</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-certificate fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="certifications" id="certifications"
+                                        <span class="input-group-addon"><i class="fa fa-certificate fa"
+                                                                           aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="certifications"
+                                       id="certifications"
                                        th:field="*{certification}"/>
                             </div>
                         </div>
@@ -250,8 +257,68 @@
                     </div>
                 </div>
 
+
                 <div class="form-group ">
                     <input type="submit" class="btn btn-success" value="UPDATE"/>
+                </div>
+            </form>
+
+            <form class="formedits" th:action="@{'/updatereferences/' + ${user.id}}" th:method="POST">
+                <div class="teacherStuff" sec:authorize="hasRole('TEACHER')">
+                    <div class="form-group">
+                        <label for="referencefullname" class="cols-sm-2 control-label">Full Name</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="referencefullname"
+                                       id="referencefullname"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="referencephone" class="cols-sm-2 control-label">Phone Number</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="referencephone" id="referencephone"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="referencecomment" class="cols-sm-2 control-label">Reference Comment</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="referencecomment" id="referencecomment"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <input type="submit" class="btn btn-success" value="UPDATE REFERENCES"/>
+                    </div>
+                </div>
+            </form>
+
+            <form class="formedits" th:action="@{'/updatesubjects/' + ${user.id}}" th:method="POST">
+                <div class="teacherStuff" sec:authorize="hasRole('TEACHER')">
+                    <div class="form-group">
+                        <label for="subjects" class="cols-sm-2 control-label">Subjects</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-book fa" aria-hidden="true"></i></span>
+                                <select multiple="multiple" name="subjects" id="subjects" class="form-control">
+                                    <option th:each="subject: ${subjects}" th:value="${subject.id}"
+                                            th:text="${subject.name}"></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <input type="submit" class="btn btn-success" value="UPDATE REFERENCES"/>
+                    </div>
                 </div>
             </form>
 
@@ -347,6 +414,36 @@
 </div>
 
 </body>
+
+<script>
+
+    $(function () {
+        // Remove button click
+        $(document).on(
+            'click',
+            '[data-role="dynamic-fields"] > .form-inline [data-role="remove"]',
+            function (e) {
+                e.preventDefault();
+                $(this).closest('.form-inline').remove();
+            }
+        );
+        // Add button click
+        $(document).on(
+            'click',
+            '[data-role="dynamic-fields"] > .form-inline [data-role="add"]',
+            function (e) {
+                e.preventDefault();
+                var container = $(this).closest('[data-role="dynamic-fields"]');
+                new_field_group = container.children().filter('.form-inline:first-child').clone();
+                new_field_group.find('input').each(function () {
+                    $(this).val('');
+                });
+                container.append(new_field_group);
+            }
+        );
+    });
+
+</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
         integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"

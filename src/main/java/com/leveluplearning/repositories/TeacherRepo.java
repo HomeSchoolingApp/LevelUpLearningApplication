@@ -13,17 +13,20 @@ import java.util.List;
 /**
  * Created by daniel on 7/7/17.
  */
+
 @Repository
 public interface TeacherRepo extends CrudRepository<User, Long> {
     // Using HQL
     @Query("select u from User u where u.profSum is not null")
     public List<User> findAllTeachers();
+
     List<User> findAllById(List<Long> ids);
 
     @Query(value = "Select u from User u inner join u.user_subject s where s.subject_id = :subject_id", nativeQuery = true)
     List<User> findAllBySubjects(@Param("subject_id") long subject_id);
 
-    //
-//    @Query ("Select p from Pet p inner join p.filtersPets f where f.id = :passID")
-//    public ArrayList<Pet> findPetsByFilter(@Param("passID") long passID);
+
+    @Query("select u from User u where u.firstName like ?1 or u.lastName like ?1 and u.profSum is not null")
+    List<User> findTeachersByName(String searchTerm);
+
 }

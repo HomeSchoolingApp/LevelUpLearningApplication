@@ -6,17 +6,17 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1"/>
-    <title>Parent Profile</title>
+    <title>View All Teachers</title>
     <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon"/>
     <link rel="icon" href="image/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://use.fontawesome.com/4a71ee3d99.js"></script>
-    <link rel="stylesheet" href="stylesheets/stylesheet.css"/>
+    <link rel="stylesheet" th:href="@{/stylesheets/stylesheet.css}" />
 
 </head>
-
+<body>
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
@@ -49,10 +49,22 @@
     </div>
 </nav>
 
-<body>
+
 <div class="container left">
+
     <h1>Teachers</h1>
     <br/>
+
+    <div class="jumbotron" id="profilebackground">
+        <h1 class="display-3">PICTURE GOES HERE</h1>
+        <!--<p class="lead">WELCOME, <span th:text="${user.firstName + ' ' + user.lastName}"></span></p>-->
+        <p class="display-3">
+        <h3>What Would You Like To Do?</h3></p>
+        <hr class="my-4"/>
+        <form th:action="@{/search/teachers}" th:method="POST">
+            <input type="text" name="searchTerm" placeholder="Search Teacher Name"/>
+        </form>
+    </div>
 
     <div th:each="teacher : ${teachers}" class="media">
         <div class="media-left">
@@ -61,7 +73,9 @@
             </a>
         </div>
         <div class="media-body pull-left">
-            <h4 class="media-heading pull-left"><span th:text="${teacher.firstName} + ${teacher.lastName}"></span></h4>
+
+            <h4 class="media-heading pull-left"><span th:text="${teacher.firstName + ' ' + teacher.lastName}"></span></h4>
+
             <br/>
             <div class="row media-body pull-left">
                 <div class="info">
@@ -93,6 +107,7 @@
             <br/>
         </div>
     </div>
+
     <div class="container">
         <h1>Teachers</h1>
         <h2>Listing of all teachers available</h2>
@@ -124,7 +139,6 @@
 
     </div>
 </div>
-</body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
         integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
@@ -134,5 +148,6 @@
         crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+</body>
 
 </html>

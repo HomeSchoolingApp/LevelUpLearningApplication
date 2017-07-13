@@ -13,8 +13,5 @@ import java.util.List;
 
 @Repository
 public interface UsersRepo extends CrudRepository<User, Long> {
-    @Query("select u from User u where u.profSum is not null")
-    List<User> findTeachers();
-
     public User findByUsername (String username);
 }

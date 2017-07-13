@@ -20,6 +20,9 @@ public class Subject {
     @Column(name = "name")
     private String name;
 
+    @ManyToMany(mappedBy = "subjects")
+    private List<User> teachers;
+
     public Subject() {
     }
 
@@ -35,7 +38,7 @@ public class Subject {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
