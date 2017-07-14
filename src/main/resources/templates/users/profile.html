@@ -37,9 +37,9 @@
             <li class="nav-item" sec:authorize="isAuthenticated()"><a href="/subjects" class="nav-link">View
                 subjects</a></li>
             <!--<li class="nav-item" sec:authorize="isAuthenticated()">-->
-                <!--<form th:action="@{/logout}" th:method="post">-->
-                    <!--<button class="nav-link btn btn-link" style="margin-top: 2px">Logout</button>-->
-                <!--</form>-->
+            <!--<form th:action="@{/logout}" th:method="post">-->
+            <!--<button class="nav-link btn btn-link" style="margin-top: 2px">Logout</button>-->
+            <!--</form>-->
             <!--</li>-->
         </ul>
         <form th:action="@{/logout}" th:method="post" class="nav-item" sec:authorize="isAuthenticated()">
@@ -178,18 +178,18 @@
                 <div class="teacherStuff" sec:authorize="hasRole('TEACHER')">
                     <h4>Teacher Information</h4>
                     <hr/>
-                    <div class="form-group">
-                        <label for="subjects" class="cols-sm-2 control-label">Subjects</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-book fa" aria-hidden="true"></i></span>
-                                <select multiple="multiple" name="subjects" id="subjects" class="form-control">
-                                    <option th:each="subject: ${subjects}" th:value="${subject.id}"
-                                            th:text="${subject.name}"></option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                    <!--<div class="form-group">-->
+                    <!--<label for="subjects" class="cols-sm-2 control-label">Subjects</label>-->
+                    <!--<div class="cols-sm-10">-->
+                    <!--<div class="input-group">-->
+                    <!--<span class="input-group-addon"><i class="fa fa-book fa" aria-hidden="true"></i></span>-->
+                    <!--<select multiple="multiple" name="subjects" id="subjects" class="form-control">-->
+                    <!--<option th:each="subject: ${subjects}" th:value="${subject.id}"-->
+                    <!--th:text="${subject.name}"></option>-->
+                    <!--</select>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
 
 
                     <div class="form-group">
@@ -264,14 +264,15 @@
                 </div>
             </form>
 
-            <form class="formedits" th:action="@{'/updatereferences/' + ${user.id}}" th:method="POST" >
+            <form class="formedits" th:action="@{'/updatereferences/' + ${user.id}}" th:method="POST">
                 <div class="teacherStuff" sec:authorize="hasRole('TEACHER')">
                     <div class="form-group">
                         <label for="referencefullname" class="cols-sm-2 control-label">Full Name</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="referencefullname" id="referencefullname" />
+                                <input type="text" class="form-control" name="referencefullname"
+                                       id="referencefullname"/>
                             </div>
                         </div>
                     </div>
@@ -281,7 +282,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="referencephone" id="referencephone" />
+                                <input type="text" class="form-control" name="referencephone" id="referencephone"/>
                             </div>
                         </div>
                     </div>
@@ -296,6 +297,26 @@
                         </div>
                     </div>
 
+                    <div class="form-group ">
+                        <input type="submit" class="btn btn-success" value="UPDATE REFERENCES"/>
+                    </div>
+                </div>
+            </form>
+
+            <form class="formedits" th:action="@{'/updatesubjects/' + ${user.id}}" th:method="POST">
+                <div class="teacherStuff" sec:authorize="hasRole('TEACHER')">
+                    <div class="form-group">
+                        <label for="subjects" class="cols-sm-2 control-label">Subjects</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-book fa" aria-hidden="true"></i></span>
+                                <select multiple="multiple" name="subjects" id="subjects" class="form-control">
+                                    <option th:each="subject: ${subjects}" th:value="${subject.id}"
+                                            th:text="${subject.name}"></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group ">
                         <input type="submit" class="btn btn-success" value="UPDATE REFERENCES"/>
                     </div>

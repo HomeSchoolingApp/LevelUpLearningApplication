@@ -4,23 +4,24 @@ import com.leveluplearning.models.Reference;
 import com.leveluplearning.models.User;
 import com.leveluplearning.models.UserRoles;
 import com.leveluplearning.models.UsersWithRoles;
+import com.leveluplearning.repositories.Roles;
+import com.leveluplearning.repositories.SubjectsRepo;
+import com.leveluplearning.repositories.TeacherRepo;
+import com.leveluplearning.repositories.UsersRepo;
+import com.leveluplearning.models.*;
+import com.leveluplearning.repositories.*;
 import com.leveluplearning.repositories.*;
 import org.apache.catalina.security.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.annotation.MultipartConfig;
-import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.sql.Connection;
 import java.util.logging.Logger;
 
@@ -51,6 +52,29 @@ public class UsersController {
 
     @Value("${file-upload-path}")
     private String uploadPath;
+
+    @PostMapping("/updateprofile")
+    public String saveFile(
+            @RequestParam(name = "file") MultipartFile uploadedFile,
+            Model model
+    ) {
+        String filename = uploadedFile.getOriginalFilename();
+        String filepath = Paths.get(uploadPath, filename).toString();
+        File destinationFile = new File(filepath);
+        try {
+            uploadedFile.transferTo(destinationFile);
+            model.addAttribute("message", "File successfully uploaded!");
+        } catch (IOException e) {
+            e.printStackTrace();
+            model.addAttribute("message", "Oops! Something went wrong! " + e);
+        }
+
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        user.setImgUrl(filename);
+        usersDao.save(user);
+        model.addAttribute("user", user);
+        return "redirect:/updateprofile";
+    }
 
     @PostMapping("/users/register")
     public String saveUser(@ModelAttribute User user,
@@ -155,7 +179,34 @@ public class UsersController {
         return "redirect:/profile";
     }
 
-  
+    @PostMapping("/updatesubjects/{id}")
+    public String ProfileEditForm(@RequestParam(name="subjects") long[] subjectsIds, @PathVariable long id) {
+        User teacher = usersDao.findOne(id);
+
+        System.out.println(Arrays.toString(subjectsIds));
+        List<Subject> subjects = new ArrayList<>();
+        for (int i = 0; i < subjectsIds.length; i++) {
+            /*Subject subject = new Subject();
+            subject.setId(subjectsIds[i]);*/
+            Subject subject = subjectsDao.findOne(subjectsIds[i]);
+            subjects.add(subject);
+        }
+
+        teacher.setSubjects(subjects);
+
+        usersDao.save(teacher);
+
+        /*User editedUser = usersDao.findOne(id);
+
+
+
+//        editedUser.setReferences(references);
+
+        referencesDao.save(new Reference(editedUser, referencenames, referencephones));*/
+
+        return "redirect:/profile";
+    }
+
     @GetMapping("/terms")
     public String showTermsOfUse() {
         return "termsOfUse";

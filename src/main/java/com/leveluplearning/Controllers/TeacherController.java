@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import java.util.List;
 
 /**
@@ -35,6 +34,13 @@ public class TeacherController {
         return "views/viewAllTeacherProfiles";
     }
 
+
+    @PostMapping("/searchTeachersBySubjects")
+    public String searchBySubject(Model model){
+        Iterable<User> users = teacherDao.findAllTeachers();
+        model.addAttribute("teachers", users);
+        return "redirect:/teachers";
+
     @PostMapping("/search/teachers")
     public String searchTeacher(@RequestParam(name = "searchTerm") String searchTerm, Model model){
         if (searchTerm.isEmpty()){
@@ -44,6 +50,7 @@ public class TeacherController {
         model.addAttribute("teachers", teachers);
 
         return "views/viewAllTeacherProfiles";
+
     }
 
 }
