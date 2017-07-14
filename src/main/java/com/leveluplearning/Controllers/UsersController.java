@@ -163,7 +163,7 @@ public class UsersController {
 
         return "redirect:/profile";
     }
-
+  
     @PostMapping("/updatesubjects/{id}")
     public String ProfileEditForm(@RequestParam(name="subjects") long[] subjectsIds, @PathVariable long id) {
         User teacher = usersDao.findOne(id);
