@@ -262,238 +262,63 @@
             </div>
         </div>
     </div>
-</div>
-
-<!-- DROP DOWNS END HERE -->
-
-<div class="container">
-    <div class="row main">
-        <div class="main-login main-center">
-            <h4>My Profile</h4>
-            <hr/>
-            <!--<form class="formedits" th:action="@{'/updateprofile/' + ${user.id}}" th:method="POST" th:object="${user}" enctype="multipart/form-data">-->
-
-                    <!--<label for="file">Upload a photo!</label>-->
-                    <!--<input id="file" name="file" type="file" />-->
-                    <!--<br />-->
-                    <!--<input type="submit" value="upload" />-->
-
-                <!--<div class="form-group">-->
-                    <!--<label for="firstName" class="cols-sm-2 control-label">First Name</label>-->
-                    <!--<div class="cols-sm-10">-->
-                        <!--<div class="input-group">-->
-                            <!--<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>-->
-                            <!--<input type="text" class="form-control" name="firstName" id="firstName"-->
-                                   <!--th:field="*{firstName}"/>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-
-                <!--<div class="form-group">-->
-                    <!--<label for="lastName" class="cols-sm-2 control-label">Last Name</label>-->
-                    <!--<div class="cols-sm-10">-->
-                        <!--<div class="input-group">-->
-                            <!--<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>-->
-                            <!--<input type="text" class="form-control" name="lastName" id="lastName"-->
-                                   <!--th:field="*{lastName}"/>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-
-                <!--<div class="form-group">-->
-                    <!--<label for="gender" class="cols-sm-2 control-label">Gender</label>-->
-                    <!--<div class="cols-sm-10">-->
-                        <!--<div class="input-group">-->
-                            <!--<span class="input-group-addon"><i class="fa fa-genderless fa"-->
-                                                               <!--aria-hidden="true"></i></span>-->
-                            <!--<input type="text" class="form-control" name="gender" id="gender" th:field="*{gender}"/>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-
-                <!--<div class="form-group">-->
-                    <!--<label for="phoneNumber" class="cols-sm-2 control-label">Phone Number</label>-->
-                    <!--<div class="cols-sm-10">-->
-                        <!--<div class="input-group">-->
-                            <!--<span class="input-group-addon"><i class="fa fa-mobile fa" aria-hidden="true"></i></span>-->
-                            <!--<input type="text" class="form-control" name="phoneNumber" id="phoneNumber"-->
-                                   <!--th:field="*{phoneNumber}"/>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-
-                <!--<div class="form-group">-->
-                    <!--<label for="email" class="cols-sm-2 control-label">Email Address</label>-->
-                    <!--<div class="cols-sm-10">-->
-                        <!--<div class="input-group">-->
-                            <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                            <!--<input type="text" class="form-control" name="email" id="email" th:field="*{email}"/>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-
-                <!--<div class="form-group">-->
-                    <!--<label for="city" class="cols-sm-2 control-label">City</label>-->
-                    <!--<div class="cols-sm-10">-->
-                        <!--<div class="input-group">-->
-                            <!--<span class="input-group-addon"><i class="fa fa-map-marker fa"-->
-                                                               <!--aria-hidden="true"></i></span>-->
-                            <!--<input type="text" class="form-control" name="city" id="city" th:field="*{city}"/>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-
-                <!--<div class="form-group">-->
-                    <!--<label for="state" class="cols-sm-2 control-label">State</label>-->
-                    <!--<div class="cols-sm-10">-->
-                        <!--<div class="input-group">-->
-                            <!--<span class="input-group-addon"><i class="fa fa-map-marker fa"-->
-                                                               <!--aria-hidden="true"></i></span>-->
-                            <!--<input type="text" class="form-control" name="state" id="state" th:field="*{state}"/>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-
-                <!--&lt;!&ndash; Pertains to parent &ndash;&gt;-->
-
-                <!--<div class="form-group">-->
-                    <!--<label for="aboutMe" class="cols-sm-2 control-label">About Me</label>-->
-                    <!--<div class="cols-sm-10">-->
-                        <!--<div class="input-group">-->
-                            <!--<span class="input-group-addon"><i class="fa fa-pencil-square fa"-->
-                                                               <!--aria-hidden="true"></i></span>-->
-                            <!--<input type="text" class="form-control" name="aboutMe" id="aboutMe" th:field="*{aboutMe}"/>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-
-                <!--&lt;!&ndash; The following pertain only to the parent profile and request information about the student &ndash;&gt;-->
-                <!---->
-                <!--&lt;!&ndash; The following pertain only to the teacher profile &ndash;&gt;-->
-
-                <!--<div class="teacherStuff" sec:authorize="hasRole('TEACHER')">-->
-                    <!--<h4>Teacher Information</h4>-->
-                    <!--<hr/>-->
-
-
-                    <!--<div class="form-group">-->
-                        <!--<label for="language" class="cols-sm-2 control-label">Languages</label>-->
-                        <!--<div class="cols-sm-10">-->
-                            <!--<div class="input-group">-->
-                                <!--<span class="input-group-addon"><i class="fa fa-language fa"-->
-                                                                   <!--aria-hidden="true"></i></span>-->
-                                <!--<input type="text" class="form-control" name="language" id="language"-->
-                                       <!--th:field="*{language}"/>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-
-
-                    <!--<div class="form-group">-->
-                        <!--<label for="education" class="cols-sm-2 control-label">Education Level</label>-->
-                        <!--<div class="cols-sm-10">-->
-                            <!--<div class="input-group">-->
-                                <!--<span class="input-group-addon"><i class="fa fa-book fa" aria-hidden="true"></i></span>-->
-                                <!--<input type="text" class="form-control" name="education" id="education"-->
-                                       <!--th:field="*{eduLevel}"/>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-
-                    <!--<div class="form-group">-->
-                        <!--<label for="certifications" class="cols-sm-2 control-label">Certifications</label>-->
-                        <!--<div class="cols-sm-10">-->
-                            <!--<div class="input-group">-->
-                                        <!--<span class="input-group-addon"><i class="fa fa-certificate fa"-->
-                                                                           <!--aria-hidden="true"></i></span>-->
-                                <!--<input type="text" class="form-control" name="certifications"-->
-                                       <!--id="certifications"-->
-                                       <!--th:field="*{certification}"/>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-
-                    <!--<div class="form-group">-->
-                        <!--<label for="profSum" class="cols-sm-2 control-label">Professional Summary</label>-->
-                        <!--<div class="cols-sm-10">-->
-                            <!--<div class="input-group">-->
-                                <!--<span class="input-group-addon"><i class="fa fa-pencil-square fa"-->
-                                                                   <!--aria-hidden="true"></i></span>-->
-                                <!--<input type="text" class="form-control" name="profSum" id="profSum"-->
-                                       <!--th:field="*{profSum}"/>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-
-
-                <!--<div class="form-group ">-->
-                    <!--<input type="submit" class="btn btn-success" value="UPDATE"/>-->
-                <!--</div>-->
-            <!--</form>-->
-
-            <form class="formedits" th:action="@{'/updatereferences/' + ${user.id}}" th:method="POST">
-                <div class="teacherStuff" sec:authorize="hasRole('TEACHER')">
-                    <div class="form-group">
-                        <label for="referencefullname" class="cols-sm-2 control-label">Full Name</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="referencefullname"
-                                       id="referencefullname"/>
+    <div class="teacherStuff" sec:authorize="hasRole('TEACHER')">
+    <div class="card">
+        <div class="card-header" role="tab" id="headingThree">
+            <h5 class="mb-0">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    UPDATE REFERENCES
+                    <hr />
+                </a>
+            </h5>
+        </div>
+        <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+            <div class="card-block">
+                <form class="formedits" th:action="@{'/updatereferences/' + ${user.id}}" th:method="POST">
+                    <!--<div class="teacherStuff" sec:authorize="hasRole('TEACHER')">-->
+                        <div class="form-group">
+                            <label for="referencefullname" class="cols-sm-2 control-label">Full Name</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="referencefullname"
+                                           id="referencefullname"/>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="referencephone" class="cols-sm-2 control-label">Phone Number</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="referencephone" id="referencephone"/>
+                        <div class="form-group">
+                            <label for="referencephone" class="cols-sm-2 control-label">Phone Number</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="referencephone" id="referencephone"/>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="referencecomment" class="cols-sm-2 control-label">Reference Comment</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="referencecomment" id="referencecomment"/>
+                        <div class="form-group">
+                            <label for="referencecomment" class="cols-sm-2 control-label">Reference Comment</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="referencecomment" id="referencecomment"/>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group ">
-                        <input type="submit" class="btn btn-success" value="UPDATE REFERENCES"/>
-                    </div>
-                </div>
-            </form>
-
-            <!--<form class="formedits" th:action="@{'/updatesubjects/' + ${user.id}}" th:method="POST">-->
-                <!--<div class="teacherStuff" sec:authorize="hasRole('TEACHER')">-->
-                    <!--<div class="form-group">-->
-                        <!--<label for="subjects" class="cols-sm-2 control-label">Subjects</label>-->
-                        <!--<div class="cols-sm-10">-->
-                            <!--<div class="input-group">-->
-                                <!--<span class="input-group-addon"><i class="fa fa-book fa" aria-hidden="true"></i></span>-->
-                                <!--<select multiple="multiple" name="subjects" id="subjects" class="form-control">-->
-                                    <!--<option th:each="subject: ${subjects}" th:value="${subject.id}"-->
-                                            <!--th:text="${subject.name}"></option>-->
-                                <!--</select>-->
-                            <!--</div>-->
-                        <!--</div>-->
+                        <div class="form-group ">
+                            <input type="submit" class="btn btn-success" value="UPDATE REFERENCES"/>
+                        </div>
                     <!--</div>-->
-                    <!--<div class="form-group ">-->
-                        <!--<input type="submit" class="btn btn-success" value="UPDATE REFERENCES"/>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</form>-->
-
-
+                </form>
+            </div>
         </div>
     </div>
+
+</div>
+</div>
+
 
     <!-- FOOTER STARTS HERE -->
 
@@ -580,7 +405,6 @@
             </div>
         </div>
     </footer>
-</div>
 
 </body>
 
