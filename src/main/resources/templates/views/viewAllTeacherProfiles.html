@@ -70,7 +70,7 @@
     <div th:each="teacher : ${teachers}" class="media">
         <div class="media-left">
             <a href="#">
-                <img th:src="${'/uploads' + teacher.imgUrl}" class="media-object" height="64px" width="64px"/><!--th:src="${image.path}"-->
+                <img th:src="${'/uploads/' + teacher.imgUrl}" class="media-object" height="64px" width="64px"/><!--th:src="${image.path}"-->
             </a>
         </div>
         <div class="media-body pull-left">
