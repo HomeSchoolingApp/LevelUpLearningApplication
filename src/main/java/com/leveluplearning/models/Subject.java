@@ -20,8 +20,8 @@ public class Subject {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(mappedBy = "subjects")
-    private List<User> teachers;
+//    @ManyToMany(mappedBy = "subjects")
+//    private List<User> teachers;
 
     public Subject() {
     }
