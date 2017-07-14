@@ -30,21 +30,22 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-md-0">
 
-            <li class="nav-item" sec:authorize="isAuthenticated()"><a href="#" class="nav-link">Welcome, <span
-                    sec:authentication="name">Name</span></a></li>
+            <li class="nav-item" sec:authorize="isAuthenticated()"><a href="/profile" class="nav-link"><span
+                    th:text="${user.firstName + ' ' + user.lastName}"></span></a></li>
+            <!--<li class="nav-item"><a href="/updateprofile" class="nav-link">Edit Profile</a></li>-->
             <li class="nav-item"><a href="/teachers" class="nav-link">View all Teachers</a></li>
-            <li class="nav-item" sec:authorize="isAuthenticated()"><a href="/subjects" class="nav-link">View
-                subjects</a></li>
-            <li class="nav-item" sec:authorize="isAuthenticated()">
-                <form th:action="@{/logout}" th:method="post">
-                    <button class="nav-link btn btn-link" style="margin-top: 2px">Logout</button>
-                </form>
-            </li>
+            <!--<li class="nav-item" sec:authorize="isAuthenticated()">-->
+            <!--<form th:action="@{/logout}" th:method="post">-->
+            <!--<button class="nav-link btn btn-link" style="margin-top: 2px">Logout</button>-->
+            <!--</form>-->
+            <!--</li>-->
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search"/>
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <form th:action="@{/logout}" th:method="post" class="nav-item" sec:authorize="isAuthenticated()">
+            <button class="nav-link btn-link">Logout</button>
         </form>
+        <div id="settingsIcon">
+            <span><a href="/updateprofile"><i class="fa fa-cogs" aria-hidden="true"></i></a></span>
+        </div>
 
     </div>
 </nav>

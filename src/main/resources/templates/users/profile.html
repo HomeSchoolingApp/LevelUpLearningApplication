@@ -25,7 +25,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <a class="navbar-brand" href="/profile">Level Up Learning</a>
+    <a class="navbar-brand" href="/">Level Up Learning</a>
 
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
@@ -33,9 +33,8 @@
 
             <li class="nav-item" sec:authorize="isAuthenticated()"><a href="/profile" class="nav-link"><span
                     th:text="${user.firstName + ' ' + user.lastName}"></span></a></li>
+            <!--<li class="nav-item"><a href="/updateprofile" class="nav-link">Edit Profile</a></li>-->
             <li class="nav-item"><a href="/teachers" class="nav-link">View all Teachers</a></li>
-            <li class="nav-item" sec:authorize="isAuthenticated()"><a href="/subjects" class="nav-link">View
-                subjects</a></li>
             <!--<li class="nav-item" sec:authorize="isAuthenticated()">-->
             <!--<form th:action="@{/logout}" th:method="post">-->
             <!--<button class="nav-link btn btn-link" style="margin-top: 2px">Logout</button>-->
@@ -43,7 +42,7 @@
             <!--</li>-->
         </ul>
         <form th:action="@{/logout}" th:method="post" class="nav-item" sec:authorize="isAuthenticated()">
-            <button class="nav-link btn btn-link" style="margin-top: 2px">Logout</button>
+            <button class="nav-link btn-link">Logout</button>
         </form>
         <div id="settingsIcon">
             <span><a href="/updateprofile"><i class="fa fa-cogs" aria-hidden="true"></i></a></span>
@@ -52,217 +51,386 @@
     </div>
 </nav>
 
+<!-- DROP DOWNS BEGIN HERE -->
+
+<div id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="card">
+        <div class="card-header" role="tab" id="headingOne">
+            <h5 class="mb-0">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    PROFILE INFO
+                    <hr/>
+                </a>
+            </h5>
+        </div>
+
+        <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="card-block">
+                <form class="formedits" th:action="@{'/updateprofile/' + ${user.id}}" th:method="POST" th:object="${user}" enctype="multipart/form-data">
+
+                    <label for="file">Upload a photo!</label>
+                    <input id="file" name="file" type="file" />
+                    <br />
+                    <!--<input type="submit" value="upload" />-->
+
+                    <div class="form-group">
+                        <label for="firstName" class="cols-sm-2 control-label">First Name</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="firstName" id="firstName"
+                                       th:field="*{firstName}"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName" class="cols-sm-2 control-label">Last Name</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="lastName" id="lastName"
+                                       th:field="*{lastName}"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gender" class="cols-sm-2 control-label">Gender</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-genderless fa"
+                                                               aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="gender" id="gender" th:field="*{gender}"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phoneNumber" class="cols-sm-2 control-label">Phone Number</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-mobile fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="phoneNumber" id="phoneNumber"
+                                       th:field="*{phoneNumber}"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="cols-sm-2 control-label">Email Address</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="email" id="email" th:field="*{email}"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city" class="cols-sm-2 control-label">City</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-map-marker fa"
+                                                               aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="city" id="city" th:field="*{city}"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="state" class="cols-sm-2 control-label">State</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-map-marker fa"
+                                                               aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="state" id="state" th:field="*{state}"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pertains to parent -->
+
+                    <div class="form-group">
+                        <label for="aboutMe" class="cols-sm-2 control-label">About Me</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-pencil-square fa"
+                                                               aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="aboutMe" id="aboutMe" th:field="*{aboutMe}"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- The following pertain only to the parent profile and request information about the student -->
+
+                    <!-- The following pertain only to the teacher profile -->
+
+                    <div class="teacherStuff" sec:authorize="hasRole('TEACHER')">
+                        <h4>Teacher Information</h4>
+                        <hr/>
+
+
+                        <div class="form-group">
+                            <label for="language" class="cols-sm-2 control-label">Languages</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-language fa"
+                                                                   aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="language" id="language"
+                                           th:field="*{language}"/>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="education" class="cols-sm-2 control-label">Education Level</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-book fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="education" id="education"
+                                           th:field="*{eduLevel}"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="certifications" class="cols-sm-2 control-label">Certifications</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-certificate fa"
+                                                                           aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="certifications"
+                                           id="certifications"
+                                           th:field="*{certification}"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="profSum" class="cols-sm-2 control-label">Professional Summary</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-pencil-square fa"
+                                                                   aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="profSum" id="profSum"
+                                           th:field="*{profSum}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group ">
+                        <input type="submit" class="btn btn-success" value="UPDATE"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" role="tab" id="headingTwo">
+            <h5 class="mb-0">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    UPDATE SUBJECTS
+                    <hr />
+                </a>
+            </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="card-block">
+                <form class="formedits" th:action="@{'/updatesubjects/' + ${user.id}}" th:method="POST">
+                    <div class="teacherStuff" sec:authorize="hasRole('TEACHER')">
+                        <div class="form-group">
+                            <label for="subjects" class="cols-sm-2 control-label">Subjects</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-book fa" aria-hidden="true"></i></span>
+                                    <select multiple="multiple" name="subjects" id="subjects" class="form-control">
+                                        <option th:each="subject: ${subjects}" th:value="${subject.id}"
+                                                th:text="${subject.name}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <input type="submit" class="btn btn-success" value="UPDATE"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- DROP DOWNS END HERE -->
+
 <div class="container">
     <div class="row main">
         <div class="main-login main-center">
             <h4>My Profile</h4>
             <hr/>
-            <form class="formedits" th:action="@{'/updateprofile/' + ${user.id}}" th:method="POST" th:object="${user}" enctype="multipart/form-data">
+            <!--<form class="formedits" th:action="@{'/updateprofile/' + ${user.id}}" th:method="POST" th:object="${user}" enctype="multipart/form-data">-->
 
-                    <label for="file">Upload a photo!</label>
-                    <input id="file" name="file" type="file" />
-                    <br />
-                    <input type="submit" value="upload" />
+                    <!--<label for="file">Upload a photo!</label>-->
+                    <!--<input id="file" name="file" type="file" />-->
+                    <!--<br />-->
+                    <!--<input type="submit" value="upload" />-->
 
-                <div class="form-group">
-                    <label for="firstName" class="cols-sm-2 control-label">First Name</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="firstName" id="firstName"
-                                   th:field="*{firstName}"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="lastName" class="cols-sm-2 control-label">Last Name</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="lastName" id="lastName"
-                                   th:field="*{lastName}"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="gender" class="cols-sm-2 control-label">Gender</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-genderless fa"
-                                                               aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="gender" id="gender" th:field="*{gender}"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="phoneNumber" class="cols-sm-2 control-label">Phone Number</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-mobile fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="phoneNumber" id="phoneNumber"
-                                   th:field="*{phoneNumber}"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="email" class="cols-sm-2 control-label">Email Address</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="email" id="email" th:field="*{email}"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="city" class="cols-sm-2 control-label">City</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-map-marker fa"
-                                                               aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="city" id="city" th:field="*{city}"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="state" class="cols-sm-2 control-label">State</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-map-marker fa"
-                                                               aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="state" id="state" th:field="*{state}"/>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pertains to parent -->
-
-                <div class="form-group">
-                    <label for="aboutMe" class="cols-sm-2 control-label">About Me</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-pencil-square fa"
-                                                               aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="aboutMe" id="aboutMe" th:field="*{aboutMe}"/>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- The following pertain only to the parent profile and request information about the student -->
-
-                <!--<h2>Tell us about your student</h2>-->
-
-                <!--<label for="studentName">Name</label>-->
-                <!--<input id="studentName" class="form-control" th:field="*{studentName}"/>-->
-
-                <!--<label for="dob">Age</label>  &lt;!&ndash; date of birth to be displayed as age number not date format &ndash;&gt;-->
-                <!--<input id="dob" class="form-control" th:field="*{dob}"/>-->
-
-                <!--<label for="eduLevel">Grade Level</label>-->
-                <!--<input id="eduLevel" class="form-control" th:field="*{eduLevel}"/>-->
-
-                <!--<label for="studentGender">Gender</label>-->
-                <!--<input id="studentGender" class="form-control" th:field="*{studentGender}"/>-->
-
-                <!--<label for="subjects">Subjects Needed</label>-->
-                <!--<input id="subjects" class="form-control" th:field="*{subjects}"/>-->
-
-
-                <!-- The following pertain only to the teacher profile -->
-
-                <div class="teacherStuff" sec:authorize="hasRole('TEACHER')">
-                    <h4>Teacher Information</h4>
-                    <hr/>
-                    <!--<div class="form-group">-->
-                    <!--<label for="subjects" class="cols-sm-2 control-label">Subjects</label>-->
+                <!--<div class="form-group">-->
+                    <!--<label for="firstName" class="cols-sm-2 control-label">First Name</label>-->
                     <!--<div class="cols-sm-10">-->
-                    <!--<div class="input-group">-->
-                    <!--<span class="input-group-addon"><i class="fa fa-book fa" aria-hidden="true"></i></span>-->
-                    <!--<select multiple="multiple" name="subjects" id="subjects" class="form-control">-->
-                    <!--<option th:each="subject: ${subjects}" th:value="${subject.id}"-->
-                    <!--th:text="${subject.name}"></option>-->
-                    <!--</select>-->
+                        <!--<div class="input-group">-->
+                            <!--<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>-->
+                            <!--<input type="text" class="form-control" name="firstName" id="firstName"-->
+                                   <!--th:field="*{firstName}"/>-->
+                        <!--</div>-->
                     <!--</div>-->
-                    <!--</div>-->
-                    <!--</div>-->
+                <!--</div>-->
 
-
-                    <div class="form-group">
-                        <label for="language" class="cols-sm-2 control-label">Languages</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-language fa"
-                                                                   aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="language" id="language"
-                                       th:field="*{language}"/>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--<label for="resume">Resume</label>-->
-                    <!--<input id="resume" class="form-control" th:field="*{resume}" />-->
-
-                    <!--<form>-->
-                    <!--<div class="form-group">-->
-                    <!--<label for="references" class="cols-sm-2 control-label">References</label>-->
+                <!--<div class="form-group">-->
+                    <!--<label for="lastName" class="cols-sm-2 control-label">Last Name</label>-->
                     <!--<div class="cols-sm-10">-->
-                    <!--<div class="input-group">-->
-                    <!--<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>-->
-                    <!--<input type="text" class="form-control" name="references" id="references"-->
-                    <!--th:field="*{references}"/>-->
+                        <!--<div class="input-group">-->
+                            <!--<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>-->
+                            <!--<input type="text" class="form-control" name="lastName" id="lastName"-->
+                                   <!--th:field="*{lastName}"/>-->
+                        <!--</div>-->
                     <!--</div>-->
+                <!--</div>-->
+
+                <!--<div class="form-group">-->
+                    <!--<label for="gender" class="cols-sm-2 control-label">Gender</label>-->
+                    <!--<div class="cols-sm-10">-->
+                        <!--<div class="input-group">-->
+                            <!--<span class="input-group-addon"><i class="fa fa-genderless fa"-->
+                                                               <!--aria-hidden="true"></i></span>-->
+                            <!--<input type="text" class="form-control" name="gender" id="gender" th:field="*{gender}"/>-->
+                        <!--</div>-->
                     <!--</div>-->
+                <!--</div>-->
+
+                <!--<div class="form-group">-->
+                    <!--<label for="phoneNumber" class="cols-sm-2 control-label">Phone Number</label>-->
+                    <!--<div class="cols-sm-10">-->
+                        <!--<div class="input-group">-->
+                            <!--<span class="input-group-addon"><i class="fa fa-mobile fa" aria-hidden="true"></i></span>-->
+                            <!--<input type="text" class="form-control" name="phoneNumber" id="phoneNumber"-->
+                                   <!--th:field="*{phoneNumber}"/>-->
+                        <!--</div>-->
                     <!--</div>-->
-                    <!--</form>-->
+                <!--</div>-->
+
+                <!--<div class="form-group">-->
+                    <!--<label for="email" class="cols-sm-2 control-label">Email Address</label>-->
+                    <!--<div class="cols-sm-10">-->
+                        <!--<div class="input-group">-->
+                            <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
+                            <!--<input type="text" class="form-control" name="email" id="email" th:field="*{email}"/>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<div class="form-group">-->
+                    <!--<label for="city" class="cols-sm-2 control-label">City</label>-->
+                    <!--<div class="cols-sm-10">-->
+                        <!--<div class="input-group">-->
+                            <!--<span class="input-group-addon"><i class="fa fa-map-marker fa"-->
+                                                               <!--aria-hidden="true"></i></span>-->
+                            <!--<input type="text" class="form-control" name="city" id="city" th:field="*{city}"/>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<div class="form-group">-->
+                    <!--<label for="state" class="cols-sm-2 control-label">State</label>-->
+                    <!--<div class="cols-sm-10">-->
+                        <!--<div class="input-group">-->
+                            <!--<span class="input-group-addon"><i class="fa fa-map-marker fa"-->
+                                                               <!--aria-hidden="true"></i></span>-->
+                            <!--<input type="text" class="form-control" name="state" id="state" th:field="*{state}"/>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--&lt;!&ndash; Pertains to parent &ndash;&gt;-->
+
+                <!--<div class="form-group">-->
+                    <!--<label for="aboutMe" class="cols-sm-2 control-label">About Me</label>-->
+                    <!--<div class="cols-sm-10">-->
+                        <!--<div class="input-group">-->
+                            <!--<span class="input-group-addon"><i class="fa fa-pencil-square fa"-->
+                                                               <!--aria-hidden="true"></i></span>-->
+                            <!--<input type="text" class="form-control" name="aboutMe" id="aboutMe" th:field="*{aboutMe}"/>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--&lt;!&ndash; The following pertain only to the parent profile and request information about the student &ndash;&gt;-->
+                <!---->
+                <!--&lt;!&ndash; The following pertain only to the teacher profile &ndash;&gt;-->
+
+                <!--<div class="teacherStuff" sec:authorize="hasRole('TEACHER')">-->
+                    <!--<h4>Teacher Information</h4>-->
+                    <!--<hr/>-->
 
 
-                    <div class="form-group">
-                        <label for="education" class="cols-sm-2 control-label">Education Level</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-book fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="education" id="education"
-                                       th:field="*{eduLevel}"/>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="certifications" class="cols-sm-2 control-label">Certifications</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-certificate fa"
-                                                                           aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="certifications"
-                                       id="certifications"
-                                       th:field="*{certification}"/>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="profSum" class="cols-sm-2 control-label">Professional Summary</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-pencil-square fa"
-                                                                   aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="profSum" id="profSum"
-                                       th:field="*{profSum}"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <!--<div class="form-group">-->
+                        <!--<label for="language" class="cols-sm-2 control-label">Languages</label>-->
+                        <!--<div class="cols-sm-10">-->
+                            <!--<div class="input-group">-->
+                                <!--<span class="input-group-addon"><i class="fa fa-language fa"-->
+                                                                   <!--aria-hidden="true"></i></span>-->
+                                <!--<input type="text" class="form-control" name="language" id="language"-->
+                                       <!--th:field="*{language}"/>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
 
 
-                <div class="form-group ">
-                    <input type="submit" class="btn btn-success" value="UPDATE"/>
-                </div>
-            </form>
+                    <!--<div class="form-group">-->
+                        <!--<label for="education" class="cols-sm-2 control-label">Education Level</label>-->
+                        <!--<div class="cols-sm-10">-->
+                            <!--<div class="input-group">-->
+                                <!--<span class="input-group-addon"><i class="fa fa-book fa" aria-hidden="true"></i></span>-->
+                                <!--<input type="text" class="form-control" name="education" id="education"-->
+                                       <!--th:field="*{eduLevel}"/>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="form-group">-->
+                        <!--<label for="certifications" class="cols-sm-2 control-label">Certifications</label>-->
+                        <!--<div class="cols-sm-10">-->
+                            <!--<div class="input-group">-->
+                                        <!--<span class="input-group-addon"><i class="fa fa-certificate fa"-->
+                                                                           <!--aria-hidden="true"></i></span>-->
+                                <!--<input type="text" class="form-control" name="certifications"-->
+                                       <!--id="certifications"-->
+                                       <!--th:field="*{certification}"/>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="form-group">-->
+                        <!--<label for="profSum" class="cols-sm-2 control-label">Professional Summary</label>-->
+                        <!--<div class="cols-sm-10">-->
+                            <!--<div class="input-group">-->
+                                <!--<span class="input-group-addon"><i class="fa fa-pencil-square fa"-->
+                                                                   <!--aria-hidden="true"></i></span>-->
+                                <!--<input type="text" class="form-control" name="profSum" id="profSum"-->
+                                       <!--th:field="*{profSum}"/>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+
+                <!--<div class="form-group ">-->
+                    <!--<input type="submit" class="btn btn-success" value="UPDATE"/>-->
+                <!--</div>-->
+            <!--</form>-->
 
             <form class="formedits" th:action="@{'/updatereferences/' + ${user.id}}" th:method="POST">
                 <div class="teacherStuff" sec:authorize="hasRole('TEACHER')">
@@ -303,25 +471,25 @@
                 </div>
             </form>
 
-            <form class="formedits" th:action="@{'/updatesubjects/' + ${user.id}}" th:method="POST">
-                <div class="teacherStuff" sec:authorize="hasRole('TEACHER')">
-                    <div class="form-group">
-                        <label for="subjects" class="cols-sm-2 control-label">Subjects</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-book fa" aria-hidden="true"></i></span>
-                                <select multiple="multiple" name="subjects" id="subjects" class="form-control">
-                                    <option th:each="subject: ${subjects}" th:value="${subject.id}"
-                                            th:text="${subject.name}"></option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group ">
-                        <input type="submit" class="btn btn-success" value="UPDATE REFERENCES"/>
-                    </div>
-                </div>
-            </form>
+            <!--<form class="formedits" th:action="@{'/updatesubjects/' + ${user.id}}" th:method="POST">-->
+                <!--<div class="teacherStuff" sec:authorize="hasRole('TEACHER')">-->
+                    <!--<div class="form-group">-->
+                        <!--<label for="subjects" class="cols-sm-2 control-label">Subjects</label>-->
+                        <!--<div class="cols-sm-10">-->
+                            <!--<div class="input-group">-->
+                                <!--<span class="input-group-addon"><i class="fa fa-book fa" aria-hidden="true"></i></span>-->
+                                <!--<select multiple="multiple" name="subjects" id="subjects" class="form-control">-->
+                                    <!--<option th:each="subject: ${subjects}" th:value="${subject.id}"-->
+                                            <!--th:text="${subject.name}"></option>-->
+                                <!--</select>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="form-group ">-->
+                        <!--<input type="submit" class="btn btn-success" value="UPDATE REFERENCES"/>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</form>-->
 
 
         </div>
@@ -415,6 +583,12 @@
 </div>
 
 </body>
+
+<script>
+
+    $('.collapse').collapse()
+
+</script>
 
 <script>
 
