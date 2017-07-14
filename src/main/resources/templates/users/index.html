@@ -57,13 +57,12 @@
 
 <div class="container">
     <div class="jumbotron" id="profilebackground">
-        <div th:each="teacher : ${teachers}" class="media">
             <div class="media-left">
                 <a href="#">
-                    <img th:src="${'/uploads/' + teacher.imgUrl}" class="media-object" height="64px" width="64px"/>
+                    <img th:src="${'/uploads/' + user.imgUrl}" class="media-object" height="64px" width="64px"/>
                 </a>
+                <br/>
             </div>
-        </div>
         <p class="lead">WELCOME, <span
                 th:text="${user.firstName + ' ' + user.lastName}"></span></p>
         <p class="display-3">
