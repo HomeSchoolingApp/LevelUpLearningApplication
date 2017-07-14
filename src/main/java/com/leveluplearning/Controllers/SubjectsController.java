@@ -4,7 +4,9 @@ import com.leveluplearning.models.Subject;
 import com.leveluplearning.models.User;
 import com.leveluplearning.repositories.SubjectsRepo;
 import com.leveluplearning.repositories.TeacherRepo;
+import com.leveluplearning.repositories.UsersRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +29,9 @@ public class SubjectsController {
     @Autowired
     TeacherRepo teacherDao;
 
+    @Autowired
+    UsersRepo usersDao;
+
     @GetMapping("/subjects")
     public String getSubjects(){
         subjectsDao.findAll();
@@ -35,6 +40,10 @@ public class SubjectsController {
 
     @PostMapping("/searchTeachersBySubjects")
     public String searchTeachersBySubjects(Model model, @RequestParam(name = "subjects") List<Subject> selectedSubjects){
+
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = usersDao.findByUsername(loggedInUser.getUsername());
+        model.addAttribute("user", user);
 
         List<User> teachers = new ArrayList<>();
 

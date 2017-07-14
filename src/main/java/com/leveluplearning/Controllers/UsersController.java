@@ -59,28 +59,28 @@ public class UsersController {
     @Value("${file-upload-path}")
     private String uploadPath;
 
-    @PostMapping("/updateprofile")
-    public String saveFile(
-            @RequestParam(name = "file") MultipartFile uploadedFile,
-            Model model
-    ) {
-        String filename = uploadedFile.getOriginalFilename();
-        String filepath = Paths.get(uploadPath, filename).toString();
-        File destinationFile = new File(filepath);
-        try {
-            uploadedFile.transferTo(destinationFile);
-            model.addAttribute("message", "File successfully uploaded!");
-        } catch (IOException e) {
-            e.printStackTrace();
-            model.addAttribute("message", "Oops! Something went wrong! " + e);
-        }
-
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        user.setImgUrl(filename);
-        usersDao.save(user);
-        model.addAttribute("user", user);
-        return "redirect:/updateprofile";
-    }
+//    @PostMapping("/updateprofile")
+//    public String saveFile(
+//            @RequestParam(name = "file") MultipartFile uploadedFile,
+//            Model model
+//    ) {
+////        String filename = uploadedFile.getOriginalFilename();
+////        String filepath = Paths.get(uploadPath, filename).toString();
+////        File destinationFile = new File(filepath);
+////        try {
+////            uploadedFile.transferTo(destinationFile);
+////            model.addAttribute("message", "File successfully uploaded!");
+////        } catch (IOException e) {
+////            e.printStackTrace();
+////            model.addAttribute("message", "Oops! Something went wrong! " + e);
+////        }
+////
+////        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+////        user.setImgUrl(filename);
+////        usersDao.save(user);
+////        model.addAttribute("user", user);
+//        return "redirect:/updateprofile";
+//    }
 
     @PostMapping("/users/register")
     public String saveUser(@ModelAttribute User user,
@@ -119,7 +119,9 @@ public class UsersController {
     }
   
     @PostMapping("/updateprofile/{id}")
-    public String ProfileEditForm(@ModelAttribute User user, @PathVariable Long id) {
+    public String ProfileEditForm(@ModelAttribute User user, @PathVariable Long id, @RequestParam(name = "file") MultipartFile uploadedFile,
+                                  Model model) {
+
         User editedUser = usersDao.findOne(id);
         editedUser.setAboutMe(user.getAboutMe());
         editedUser.setCertification(user.getCertification());
@@ -136,6 +138,21 @@ public class UsersController {
         editedUser.setReferences(user.getReferences());
         editedUser.setState(user.getState());
         editedUser.setSubjects(user.getSubjects());
+
+        String filename = uploadedFile.getOriginalFilename();
+        String filepath = Paths.get(uploadPath, filename).toString();
+        File destinationFile = new File(filepath);
+        try {
+            uploadedFile.transferTo(destinationFile);
+            model.addAttribute("message", "File successfully uploaded!");
+        } catch (IOException e) {
+            e.printStackTrace();
+            model.addAttribute("message", "Oops! Something went wrong! " + e);
+        }
+
+        editedUser.setImgUrl(filename);
+        usersDao.save(editedUser);
+        model.addAttribute("user", editedUser);
 
 //        List<Reference> references = new ArrayList<>();
 //
