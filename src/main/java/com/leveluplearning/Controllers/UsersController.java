@@ -99,6 +99,7 @@ public class UsersController {
     @PostMapping("/updateprofile/{id}")
     public String ProfileEditForm(@ModelAttribute User user, @PathVariable Long id, @RequestParam(name = "file") MultipartFile uploadedFile,
                                   Model model) {
+
         User editedUser = usersDao.findOne(id);
         editedUser.setAboutMe(user.getAboutMe());
         editedUser.setCertification(user.getCertification());
