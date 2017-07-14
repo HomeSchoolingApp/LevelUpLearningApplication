@@ -13,16 +13,24 @@ import com.leveluplearning.repositories.*;
 import com.leveluplearning.repositories.*;
 import org.apache.catalina.security.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.annotation.MultipartConfig;
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -52,29 +60,6 @@ public class UsersController {
 
     @Value("${file-upload-path}")
     private String uploadPath;
-
-    @PostMapping("/updateprofile")
-    public String saveFile(
-            @RequestParam(name = "file") MultipartFile uploadedFile,
-            Model model
-    ) {
-        String filename = uploadedFile.getOriginalFilename();
-        String filepath = Paths.get(uploadPath, filename).toString();
-        File destinationFile = new File(filepath);
-        try {
-            uploadedFile.transferTo(destinationFile);
-            model.addAttribute("message", "File successfully uploaded!");
-        } catch (IOException e) {
-            e.printStackTrace();
-            model.addAttribute("message", "Oops! Something went wrong! " + e);
-        }
-
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        user.setImgUrl(filename);
-        usersDao.save(user);
-        model.addAttribute("user", user);
-        return "redirect:/updateprofile";
-    }
 
     @PostMapping("/users/register")
     public String saveUser(@ModelAttribute User user,
