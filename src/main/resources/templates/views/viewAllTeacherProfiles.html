@@ -98,7 +98,7 @@
                     <h6 th:text="${teacher.language}"></h6>
                 </div>
                 <div class="info">
-                    <h6 th:each="reference:${teacher.references}" th:text="${teacher.fullName}"></h6>
+                    <h6 th:each="reference:${teacher.references}" th:text="${reference.fullName}"></h6>
                 </div>
                 <div class="info">
                     <h6 th:text="${teacher.certification}"></h6>
@@ -109,36 +109,36 @@
         </div>
     </div>
 
-    <div class="container">
-        <h1>Teachers</h1>
-        <h2>Listing of all teachers available</h2>
+    <!--<div class="container">-->
+        <!--<h1>Teachers</h1>-->
+        <!--<h2>Listing of all teachers available</h2>-->
 
-        <div th:each="teacher : ${teachers}">
-            <h3>Subjects:</h3>
-            <div th:each="subject : ${teacher.subjects}">
-                <span th:text="${subject.name}"></span>
-            </div>
-            <!--<div th:each="image : ${teacher.images}">-->
-            <!--<img th:src="${image.path}" width="200px" height="200px" />-->
+        <!--<div th:each="teacher : ${teachers}">-->
+            <!--<h3>Subjects:</h3>-->
+            <!--<div th:each="subject : ${teacher.subjects}">-->
+                <!--<span th:text="${subject.name}"></span>-->
             <!--</div>-->
+            <!--&lt;!&ndash;<div th:each="image : ${teacher.images}">&ndash;&gt;-->
+            <!--&lt;!&ndash;<img th:src="${image.path}" width="200px" height="200px" />&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
 
-            <!--<div th:if="${teacher.imageUrl}">-->
-            <!--<img th:src="${'/uploads/' + teacher.imageUrl}" alt="" width="200" height="200" />-->
-            <!--</div>-->
+            <!--&lt;!&ndash;<div th:if="${teacher.imageUrl}">&ndash;&gt;-->
+            <!--&lt;!&ndash;<img th:src="${'/uploads/' + teacher.imageUrl}" alt="" width="200" height="200" />&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
 
-            <h2>Name: <span th:text="${teacher.firstName} + ${teacher.lastName}"></span></h2>
-            <h2>Gender: <span th:text="${teacher.gender}"></span></h2>
-            <h2>Email: <span th:text="${teacher.email}"></span></h2>
-            <h2>Phone Number: <span th:text="${teacher.phoneNumber}"></span></h2>
-            <h2>City: <span th:text="${teacher.city}"></span></h2>
-            <h2>State: <span th:text="${teacher.state}"></span></h2>
-            <h2>Language: <span th:text="${teacher.language}"></span></h2>
-            <h2>References: <span th:each="reference:${teacher.references}" th:text="${reference.fullName}"></span></h2>
-            <h2>Certification: <span th:text="${teacher.certification}"></span></h2>
-            <h2>Professional Summary: <span th:text="${teacher.profSum}"></span></h2>
-        </div>
+            <!--<h2>Name: <span th:text="${teacher.firstName} + ${teacher.lastName}"></span></h2>-->
+            <!--<h2>Gender: <span th:text="${teacher.gender}"></span></h2>-->
+            <!--<h2>Email: <span th:text="${teacher.email}"></span></h2>-->
+            <!--<h2>Phone Number: <span th:text="${teacher.phoneNumber}"></span></h2>-->
+            <!--<h2>City: <span th:text="${teacher.city}"></span></h2>-->
+            <!--<h2>State: <span th:text="${teacher.state}"></span></h2>-->
+            <!--<h2>Language: <span th:text="${teacher.language}"></span></h2>-->
+            <!--<h2>References: <span th:each="reference:${teacher.references}" th:text="${reference.fullName}"></span></h2>-->
+            <!--<h2>Certification: <span th:text="${teacher.certification}"></span></h2>-->
+            <!--<h2>Professional Summary: <span th:text="${teacher.profSum}"></span></h2>-->
+        <!--</div>-->
 
-    </div>
+    <!--</div>-->
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"

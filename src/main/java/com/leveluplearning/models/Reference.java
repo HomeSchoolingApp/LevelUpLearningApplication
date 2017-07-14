@@ -26,10 +26,10 @@ public class Reference {
     @Column(name = "ref_comment", columnDefinition = "TEXT")
     private String refComment;
 
-    public Reference(User user, String phoneNumber, String fullName, String refComment) {
+    public Reference(User user, String fullName, String phoneNumber, String refComment) {
         this.user = user;
-        this.phoneNumber = phoneNumber;
         this.fullName = fullName;
+        this.phoneNumber = phoneNumber;
         this.refComment = refComment;
     }
 
