@@ -63,7 +63,9 @@
         <h3>What Would You Like To Do?</h3></p>
         <hr class="my-4"/>
         <form th:action="@{/search/teachers}" th:method="POST">
-            <input type="text" name="searchTerm" placeholder="Search Teacher Name"/>
+            <input type="text" class="form-control" name="searchTerm" style="text-align: center" placeholder="Search Teacher Name"/>
+            <br />
+            <button class="btn btn-success">SEARCH</button>
         </form>
     </div>
 
