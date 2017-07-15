@@ -44,6 +44,11 @@ public class TeacherController {
 
     @PostMapping("/search/teachers")
     public String searchTeacher(@RequestParam(name = "searchTerm") String searchTerm, Model model){
+
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = usersDao.findByUsername(loggedInUser.getUsername());
+        model.addAttribute("user", user);
+
         if (searchTerm.isEmpty()){
             return "redirect:/teachers";
         }
