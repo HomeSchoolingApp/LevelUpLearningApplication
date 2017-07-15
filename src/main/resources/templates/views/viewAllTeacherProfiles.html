@@ -13,7 +13,7 @@
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://use.fontawesome.com/4a71ee3d99.js"></script>
-    <link rel="stylesheet" th:href="@{/stylesheets/stylesheet.css}" />
+    <link rel="stylesheet" th:href="@{/stylesheets/stylesheet.css}"/>
 
 </head>
 <body>
@@ -51,97 +51,219 @@
 </nav>
 
 
-<div class="container left">
-
-    <h1>Teachers</h1>
-    <br/>
-
+<div class="container">
     <div class="jumbotron" id="profilebackground">
-        <h1 class="display-3">PICTURE GOES HERE</h1>
-        <!--<p class="lead">WELCOME, <span th:text="${user.firstName + ' ' + user.lastName}"></span></p>-->
-        <p class="display-3">
-        <h3>What Would You Like To Do?</h3></p>
+        <h1 class="display-3">Searching For Someone Specific?</h1>
+        <hr class="my-4"/>
+        <div class="description">
+            <p class="display-3">
+            <h3>Searching through our full list of teachers is easier then ever! Just type in the teachers name you're
+                looking for and click the big green button and watch the magic happen!</h3>
+            </p>
+        </div>
         <hr class="my-4"/>
         <form th:action="@{/search/teachers}" th:method="POST">
-            <input type="text" class="form-control" name="searchTerm" style="text-align: center" placeholder="Search Teacher Name"/>
-            <br />
+            <input type="text" class="form-control" name="searchTerm" style="text-align: center"
+                   placeholder="Search Teacher Name"/>
+            <br/>
             <button class="btn btn-success">SEARCH</button>
         </form>
     </div>
+    <!--</div>-->
 
-    <div th:each="teacher : ${teachers}" class="media">
-        <div class="media-left">
-            <a href="#">
-                <img th:src="${'/uploads/' + teacher.imgUrl}" class="media-object" height="64px" width="64px"/><!--th:src="${image.path}"-->
-            </a>
+    <div class="jumbotron jumbotron-fluid" th:each="teacher : ${teachers}">
+        <div class="container">
+            <h1 class="display-3"><span th:text="${teacher.firstName + ' ' + teacher.lastName}"></span></h1>
+            <img id="teacherSeachImg" th:src="${'/uploads/' + teacher.imgUrl}" class="media-object" height="100px" width="100px"/>
+            <br />
+            <br />
+            <p class="lead"><span th:text="${teacher.email + ' | ' + teacher.phoneNumber + ' | ' + teacher.city + ' | ' + teacher.state + ' | '
+             + teacher.language}"></span></p>
+            <p>
+                <span>
+
+                <button type="button" id="referencesbutton" class="btn btn-success" style="font-size: 20px"
+                        data-toggle="modal" data-target="#references">REFERENCES</button>
+
+                    <button type="button" id="certificationsbutton" class="btn btn-success" style="font-size: 20px"
+                            data-toggle="modal" data-target="#certifications">CERTIFICATIONS</button>
+
+                    <button type="button" id="profSumbutton" class="btn btn-success" style="font-size: 20px"
+                            data-toggle="modal" data-target="#proSum">PRO. SUMMARY</button>
+
+            </span>
+            </p>
         </div>
-        <div class="media-body pull-left">
 
-            <h4 class="media-heading pull-left"><span th:text="${teacher.firstName + ' ' + teacher.lastName}"></span></h4>
+        <!-- Modal -->
 
-            <br/>
-            <div class="row media-body pull-left">
-                <div class="info">
-                    <h6 th:text="${teacher.gender}"></h6>
+        <div class="modal fade" id="references" tabindex="-1" role="dialog" aria-labelledby="referencesLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title" id="referencesLabel">REFERENCES</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="text-align: left">
+                        <p><h6 th:each="reference:${teacher.references}" th:text="${reference.fullName + ' | ' + reference.phoneNumber}"></h6></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
-                <div class="info">
-                    <h6 th:text="${teacher.email}"></h6>
-                </div>
-                <div class="info">
-                    <h6 th:text="${teacher.phoneNumber}"></h6>
-                </div>
-                <div class="info">
-                    <h6 th:text="${teacher.city}"></h6>
-                </div>
-                <div class="info">
-                    <h6 th:text="${teacher.state}"></h6>
-                </div>
-                <div class="info">
-                    <h6 th:text="${teacher.language}"></h6>
-                </div>
-                <div class="info">
-                    <h6 th:each="reference:${teacher.references}" th:text="${reference.fullName}"></h6>
-                </div>
-                <div class="info">
-                    <h6 th:text="${teacher.certification}"></h6>
-                </div>
-                <p th:text="${teacher.profSum}" align="left"></p><!--test-->
             </div>
-            <br/>
         </div>
+
+        <!--END MODAL DIV-->
+
+        <!-- Modal -->
+
+        <div class="modal fade" id="certifications" tabindex="-1" role="dialog" aria-labelledby="certificatonsLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title" id="certificatonsLabel">TEACHER CERTIFICATIONS</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <p><h6 th:text="${teacher.certification}"></h6></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--END MODAL DIV-->
+
+        <!-- Modal -->
+
+        <div class="modal fade" id="proSum" tabindex="-1" role="dialog" aria-labelledby="proSumLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title" id="proSumLabel">PROFESSIONAL SUMMARY</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <p><h6 th:text="${teacher.profSum}"></h6></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--END MODAL DIV-->
+
     </div>
 
-    <!--<div class="container">-->
-        <!--<h1>Teachers</h1>-->
-        <!--<h2>Listing of all teachers available</h2>-->
+    <!-- FOOTER STARTS HERE -->
 
-        <!--<div th:each="teacher : ${teachers}">-->
-            <!--<h3>Subjects:</h3>-->
-            <!--<div th:each="subject : ${teacher.subjects}">-->
-                <!--<span th:text="${subject.name}"></span>-->
-            <!--</div>-->
-            <!--&lt;!&ndash;<div th:each="image : ${teacher.images}">&ndash;&gt;-->
-            <!--&lt;!&ndash;<img th:src="${image.path}" width="200px" height="200px" />&ndash;&gt;-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <footer class="mainfooter" role="contentinfo">
+        <div class="footer-top p-y-2">
+        </div>
+        <div class="footer-middle">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <!--Column1-->
+                        <div class="footer-pad">
+                            <h4 class="footertitle">Address</h4>
+                            <address>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        Codeup<br/>
+                                        600 Navarro St #350<br/>
+                                        San Antonio, TX<br/>
+                                        78205<br/>
+                                    </li>
+                                    <li>
+                                        Phone: (210) 555-5555
+                                    </li>
+                                </ul>
+                            </address>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <!--Column1-->
+                        <div class="footer-pad">
+                            <h4 class="footertitle">Popular Services</h4>
+                            <ul class="list-unstyled">
+                                <li><a href="#"></a></li>
+                                <li><a href="#">Payment Center</a></li>
+                                <li><a href="#">Contact Directory</a></li>
+                                <li><a href="#">Forms</a></li>
+                                <li><a href="#">News and Updates</a></li>
+                                <li><a href="#">FAQs</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <!--Column1-->
+                        <div class="footer-pad">
+                            <h4 class="footertitle">Website Information</h4>
+                            <ul class="list-unstyled">
+                                <li><a href="#">Website Tutorial</a></li>
+                                <li><a href="#">Accessibility</a></li>
+                                <li><a href="#">Disclaimer</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">FAQs</a></li>
+                                <li><a href="#">Webmaster</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <!--Column1-->
+                        <div class="footer-pad">
+                            <h4 class="footertitle">Popular Departments</h4>
+                            <ul class="list-unstyled">
+                                <li><a href="#">Parks and Recreation</a></li>
+                                <li><a href="#">Public Works</a></li>
+                                <li><a href="#">Police Department</a></li>
+                                <li><a href="#">Fire</a></li>
+                                <li><a href="#">Mayor and City Council</a></li>
+                                <li>
+                                    <a href="#"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!--Footer Bottom-->
+                        <p class="text-xs-center">&copy; Copyright 2017 - City of USA. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-            <!--&lt;!&ndash;<div th:if="${teacher.imageUrl}">&ndash;&gt;-->
-            <!--&lt;!&ndash;<img th:src="${'/uploads/' + teacher.imageUrl}" alt="" width="200" height="200" />&ndash;&gt;-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-            <!--<h2>Name: <span th:text="${teacher.firstName} + ${teacher.lastName}"></span></h2>-->
-            <!--<h2>Gender: <span th:text="${teacher.gender}"></span></h2>-->
-            <!--<h2>Email: <span th:text="${teacher.email}"></span></h2>-->
-            <!--<h2>Phone Number: <span th:text="${teacher.phoneNumber}"></span></h2>-->
-            <!--<h2>City: <span th:text="${teacher.city}"></span></h2>-->
-            <!--<h2>State: <span th:text="${teacher.state}"></span></h2>-->
-            <!--<h2>Language: <span th:text="${teacher.language}"></span></h2>-->
-            <!--<h2>References: <span th:each="reference:${teacher.references}" th:text="${reference.fullName}"></span></h2>-->
-            <!--<h2>Certification: <span th:text="${teacher.certification}"></span></h2>-->
-            <!--<h2>Professional Summary: <span th:text="${teacher.profSum}"></span></h2>-->
-        <!--</div>-->
-
-    <!--</div>-->
 </div>
+
+<script>
+
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').focus()
+    })
+
+</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
         integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
