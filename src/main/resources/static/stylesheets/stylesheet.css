@@ -18,9 +18,9 @@ a {
     /*color: #5cb85c;*/
     color: #d2ff52; /* Old browsers */
     color: -moz-radial-gradient(center, ellipse cover, #d2ff52 11%, #d2ff52 11%, #91e842 100%); /* FF3.6-15 */
-    color: -webkit-radial-gradient(center, ellipse cover, #d2ff52 11%,#d2ff52 11%,#91e842 100%); /* Chrome10-25,Safari5.1-6 */
-    color: radial-gradient(ellipse at center, #d2ff52 11%,#d2ff52 11%,#91e842 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#91e842',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    color: -webkit-radial-gradient(center, ellipse cover, #d2ff52 11%, #d2ff52 11%, #91e842 100%); /* Chrome10-25,Safari5.1-6 */
+    color: radial-gradient(ellipse at center, #d2ff52 11%, #d2ff52 11%, #91e842 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d2ff52', endColorstr='#91e842', GradientType=1); /* IE6-9 fallback on horizontal gradient */
     transition: 0.8s;
 }
 
@@ -32,9 +32,9 @@ a:hover {
 a:focus {
     color: #d2ff52; /* Old browsers */
     color: -moz-radial-gradient(center, ellipse cover, #d2ff52 11%, #d2ff52 11%, #91e842 100%); /* FF3.6-15 */
-    color: -webkit-radial-gradient(center, ellipse cover, #d2ff52 11%,#d2ff52 11%,#91e842 100%); /* Chrome10-25,Safari5.1-6 */
-    color: radial-gradient(ellipse at center, #d2ff52 11%,#d2ff52 11%,#91e842 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#91e842',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    color: -webkit-radial-gradient(center, ellipse cover, #d2ff52 11%, #d2ff52 11%, #91e842 100%); /* Chrome10-25,Safari5.1-6 */
+    color: radial-gradient(ellipse at center, #d2ff52 11%, #d2ff52 11%, #91e842 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d2ff52', endColorstr='#91e842', GradientType=1); /* IE6-9 fallback on horizontal gradient */
     transition: 0.8s;
 }
 
@@ -75,9 +75,9 @@ a:focus {
     color: #000000;
     background-color: #d2ff52; /* Old browsers */
     background-color: -moz-radial-gradient(center, ellipse cover, #d2ff52 11%, #d2ff52 11%, #91e842 100%); /* FF3.6-15 */
-    background-color: -webkit-radial-gradient(center, ellipse cover, #d2ff52 11%,#d2ff52 11%,#91e842 100%); /* Chrome10-25,Safari5.1-6 */
-    background-color: radial-gradient(ellipse at center, #d2ff52 11%,#d2ff52 11%,#91e842 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#91e842',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    background-color: -webkit-radial-gradient(center, ellipse cover, #d2ff52 11%, #d2ff52 11%, #91e842 100%); /* Chrome10-25,Safari5.1-6 */
+    background-color: radial-gradient(ellipse at center, #d2ff52 11%, #d2ff52 11%, #91e842 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d2ff52', endColorstr='#91e842', GradientType=1); /* IE6-9 fallback on horizontal gradient */
     transition: 0.8s;
 }
 
@@ -105,11 +105,13 @@ a:focus {
     height: 10px;
     width: 10px;
 }
+
 /*view all teachers*/
 
 .info {
     margin: 5px 30px;
 }
+
 /* ABOUT US PAGE BELOW HERO IMAGE */
 
 #about-us {
@@ -118,9 +120,9 @@ a:focus {
     color: #000000;
     background: #d2ff52; /* Old browsers */
     background: -moz-radial-gradient(center, ellipse cover, #d2ff52 11%, #d2ff52 11%, #91e842 100%); /* FF3.6-15 */
-    background: -webkit-radial-gradient(center, ellipse cover, #d2ff52 11%,#d2ff52 11%,#91e842 100%); /* Chrome10-25,Safari5.1-6 */
-    background: radial-gradient(ellipse at center, #d2ff52 11%,#d2ff52 11%,#91e842 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#91e842',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    background: -webkit-radial-gradient(center, ellipse cover, #d2ff52 11%, #d2ff52 11%, #91e842 100%); /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center, #d2ff52 11%, #d2ff52 11%, #91e842 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d2ff52', endColorstr='#91e842', GradientType=1); /* IE6-9 fallback on horizontal gradient */
     /*background-image: url("../images/aboutusbg.jpg");*/
     background-position: center;
     background-repeat: no-repeat;
@@ -128,7 +130,7 @@ a:focus {
     transition: all .2s ease-in-out;
 }
 
-#aboutusheader{
+#aboutusheader {
     text-align: center;
 }
 
@@ -139,17 +141,20 @@ hr {
 }
 
 img {
-    height: 200px;
-    width: 150px;
+    height: 250px;
+    width: 210px;
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
 }
 
 #teacherSeachImg {
     float: left;
     height: 250px;
     width: 210px;
-    -webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2);
-    -moz-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2);
-    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 670px) {
@@ -180,6 +185,7 @@ img {
     background: transparent;
     transition: width .5s ease, background-color .5s ease;
 }
+
 .aboutustitles:hover:after {
     width: 100%;
     background: #000000;
@@ -228,9 +234,9 @@ img {
     color: #000000;
     background: #d2ff52; /* Old browsers */
     background: -moz-radial-gradient(center, ellipse cover, #d2ff52 11%, #d2ff52 11%, #91e842 100%); /* FF3.6-15 */
-    background: -webkit-radial-gradient(center, ellipse cover, #d2ff52 11%,#d2ff52 11%,#91e842 100%); /* Chrome10-25,Safari5.1-6 */
-    background: radial-gradient(ellipse at center, #d2ff52 11%,#d2ff52 11%,#91e842 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#91e842',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    background: -webkit-radial-gradient(center, ellipse cover, #d2ff52 11%, #d2ff52 11%, #91e842 100%); /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center, #d2ff52 11%, #d2ff52 11%, #91e842 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d2ff52', endColorstr='#91e842', GradientType=1); /* IE6-9 fallback on horizontal gradient */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -303,9 +309,9 @@ img {
     background-color: #309842;
     border-radius: 0px;
     padding: 15px;
-    -webkit-box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.45);
-    -moz-box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.45);
-    box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.45);
+    -webkit-box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.45);
+    -moz-box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.45);
+    box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.45);
 }
 
 .navbar {
@@ -496,6 +502,7 @@ img {
     background: transparent;
     transition: width .5s ease, background-color .5s ease;
 }
+
 .btn-link:hover:after {
     width: 100%;
     background: #ffffff;
@@ -505,7 +512,6 @@ img {
     color: rgb(255, 255, 255);
     text-transform: uppercase;
 }
-
 
 /* NAVBAR STYLING END */
 
@@ -528,32 +534,36 @@ img {
     font-weight: 300;
 }
 
+.select2-container {
+    width: 100% !important;
+    text-align: left;
+}
+
 /* PROFILE INDEX STYLING ENDS HERE */
-
-
-
 
 /* FOOTER CSS GOES BELOW HERE */
 
-footer{
+footer {
     color: #549830;
     text-align: center;
 }
-footer a{
+
+footer a {
     color: #549830;
 }
-footer a:hover{
+
+footer a:hover {
     color: #000;
 }
 
-.footer-bottom{
+.footer-bottom {
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#00b7ea+22,00b7ea+22,009ec3+88 */
     background: #ffffff; /* Old browsers */
     background: -moz-linear-gradient(top, #ededed 0%, #ffffff 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, #ededed 0%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, #ededed 0%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
-    padding: 2em;
+    background: -webkit-linear-gradient(top, #ededed 0%, #ffffff 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #ededed 0%, #ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed', GradientType=0); /* IE6-9 */
+    padding: 1em;
 }
 
 .footer-row {
@@ -562,19 +572,19 @@ footer a:hover{
 }
 
 /*.footer-top{*/
-    /*background: #0d583f;*/
+/*background: #0d583f;*/
 /*}*/
-.footer-middle{
+.footer-middle {
     background: #ffffff; /* Old browsers */
     background: -moz-linear-gradient(top, #ffffff 0%, #ededed 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, #ffffff 0%,#ededed 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, #ffffff 0%,#ededed 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+    background: -webkit-linear-gradient(top, #ffffff 0%, #ededed 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #ffffff 0%, #ededed 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed', GradientType=0); /* IE6-9 */
     padding-top: 2em;
     color: #549830;
 }
 
-.footertitle{
+.footertitle {
     color: #000;
 }
 
@@ -585,12 +595,12 @@ footer a:hover{
     text-align: center;
 }
 
-.modal-footer>:not(:first-child) {
+.modal-footer > :not(:first-child) {
     margin-right: 0px;
     width: 100%;
 }
 
-.modal-footer>:not(:last-child) {
+.modal-footer > :not(:last-child) {
     margin-right: 0px;
     width: 100%;
 }

@@ -476,7 +476,7 @@ footer a:hover {
     background: -webkit-linear-gradient(top, #ededed 0%, #ffffff 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to bottom, #ededed 0%, #ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed', GradientType=0); /* IE6-9 */
-    padding: 2em;
+    padding: 1em;
 }
 
 /*.footer-top{*/
