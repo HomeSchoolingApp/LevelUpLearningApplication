@@ -431,7 +431,131 @@ span.input-group-addon i {
     text-align: center;
 }
 
+.dropdownlink {
+    color: #309842;
+    text-decoration: none;
+}
+
+.dropdownlink:hover {
+    color: #309842;
+    text-decoration: none;
+}
+
+.dropdownlink:focus {
+    color: #309842;
+    text-decoration: none;
+}
+
+.dropdownlink {
+    display: inline-block;
+    position: relative;
+    padding-bottom: 3px;
+}
+
+.dropdownlink:after {
+    content: '';
+    display: block;
+    margin: auto;
+    height: 3px;
+    width: 0px;
+    background: transparent;
+    transition: width .5s ease, background-color .5s ease;
+}
+
+.dropdownlink:hover:after {
+    width: 100%;
+    background: #309842;
+}
+
 /* SLIDE DOWN STYLING ENDS HERE */
+
+/* FILE UPLOAD BUTTON */
+
+a.animated-button:link, a.animated-button:visited {
+    position: relative;
+    display: block;
+    margin: 30px auto 0;
+    padding: 14px 15px;
+    color: #000000;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    letter-spacing: .08em;
+    border-radius: 0;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+a.animated-button:link:after, a.animated-button:visited:after {
+    content: "";
+    position: absolute;
+    height: 0%;
+    left: 50%;
+    top: 50%;
+    width: 150%;
+    z-index: -1;
+    -webkit-transition: all 0.75s ease 0s;
+    -moz-transition: all 0.75s ease 0s;
+    -o-transition: all 0.75s ease 0s;
+    transition: all 0.75s ease 0s;
+}
+
+a.animated-button:link:hover, a.animated-button:visited:hover {
+    color: #ffffff;
+    background: #309842;
+    text-shadow: none;
+}
+
+a.animated-button:link:hover:after, a.animated-button:visited:hover:after {
+    height: 450%;
+}
+
+a.animated-button:link, a.animated-button:visited {
+    position: relative;
+    display: block;
+    margin: 30px auto 0;
+    padding: 14px 15px;
+    color: #309842;
+    font-size: 14px;
+    border-radius: 0;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    letter-spacing: .08em;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+
+a.animated-button.button-one {
+    border: 2px solid #309842;
+    /*margin: 25px;*/
+    /*margin-left: 35%;*/
+    width: 50%;
+    transition: all 1s ease;
+}
+
+a.animated-button.button-one:after {
+    background: #309842;
+    -moz-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+    -ms-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+    -webkit-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+    transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+    transition: all 1s ease;
+}
+
+/* FILE UPLOAD BUTTON END */
 
 /* MODAL REGISTER BUTTON CSS */
 
