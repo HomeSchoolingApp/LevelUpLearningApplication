@@ -71,10 +71,10 @@
     </div>
     <!--</div>-->
 
-    <div class="jumbotron jumbotron-fluid" th:each="teacher : ${teachers}">
+    <div class="jumbotron jumbotron-fluid" style="padding: 1rem 1rem; margin-bottom: 2px;" th:each="teacher : ${teachers}">
         <div class="container">
-            <h1 class="display-3"><span th:text="${teacher.firstName + ' ' + teacher.lastName}"></span></h1>
             <img id="teacherSeachImg" th:src="${'/uploads/' + teacher.imgUrl}" class="media-object" height="100px" width="100px"/>
+            <h1 class="display-3"><span th:text="${teacher.firstName + ' ' + teacher.lastName}"></span></h1>
             <br />
             <br />
             <p class="lead"><span th:text="${teacher.email + ' | ' + teacher.phoneNumber + ' | ' + teacher.city + ' | ' + teacher.state + ' | '
