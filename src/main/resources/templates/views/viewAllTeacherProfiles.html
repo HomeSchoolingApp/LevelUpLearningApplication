@@ -73,7 +73,7 @@
 
     <div class="jumbotron jumbotron-fluid" style="padding: 1rem 1rem; margin-bottom: 2px;" th:each="teacher : ${teachers}">
         <div class="container">
-            <img id="teacherSeachImg" th:src="${'/uploads/' + teacher.imgUrl}" class="media-object" height="100px" width="100px"/>
+            <img id="teacherSeachImg" th:src="${'/uploads/' + teacher.imgUrl}" class="media-object" />
             <h1 class="display-3"><span th:text="${teacher.firstName + ' ' + teacher.lastName}"></span></h1>
             <br />
             <br />
@@ -108,7 +108,8 @@
                         </button>
                     </div>
                     <div class="modal-body" style="text-align: left">
-                        <p><h6 th:each="reference:${teacher.references}" th:text="${reference.fullName + ' | ' + reference.phoneNumber}"></h6></p>
+                        <h6 id="referenceInfo"></h6>
+                        <h6 th:each="reference:${teacher.references}" th:text="${reference.fullName + ' | ' + reference.phoneNumber}"></h6>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
@@ -246,7 +247,7 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-12">
+                    <div class="col-xs-12" style="width: 100%;">
                         <!--Footer Bottom-->
                         <p class="text-xs-center">&copy; Copyright 2017 - City of USA. All rights reserved.</p>
                     </div>
@@ -262,6 +263,14 @@
     $('#myModal').on('shown.bs.modal', function () {
         $('#myInput').focus()
     })
+
+//$(document).on("click", "#referencesbutton", function () {
+//    var referencesData = $(this).data('id');
+//    $(".modal-body #referenceInfo").val( referencesData );
+//    // As pointed out in comments,
+//    // it is superfluous to have to manually call the modal.
+//    // $('#addBookDialog').modal('show');
+//});
 
 </script>
 
