@@ -34,14 +34,6 @@ public class TeacherController {
         return "views/viewAllTeacherProfiles";
     }
 
-
-//    @PostMapping("/searchTeachersBySubjects")
-//    public String searchBySubject(Model model) {
-//        Iterable<User> users = teacherDao.findAllTeachers();
-//        model.addAttribute("teachers", users);
-//        return "redirect:/teachers";
-//    }
-
     @PostMapping("/search/teachers")
     public String searchTeacher(@RequestParam(name = "searchTerm") String searchTerm, Model model){
 

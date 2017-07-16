@@ -59,29 +59,6 @@ public class UsersController {
     @Value("${file-upload-path}")
     private String uploadPath;
 
-//    @PostMapping("/updateprofile")
-//    public String saveFile(
-//            @RequestParam(name = "file") MultipartFile uploadedFile,
-//            Model model
-//    ) {
-////        String filename = uploadedFile.getOriginalFilename();
-////        String filepath = Paths.get(uploadPath, filename).toString();
-////        File destinationFile = new File(filepath);
-////        try {
-////            uploadedFile.transferTo(destinationFile);
-////            model.addAttribute("message", "File successfully uploaded!");
-////        } catch (IOException e) {
-////            e.printStackTrace();
-////            model.addAttribute("message", "Oops! Something went wrong! " + e);
-////        }
-////
-////        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-////        user.setImgUrl(filename);
-////        usersDao.save(user);
-////        model.addAttribute("user", user);
-//        return "redirect:/updateprofile";
-//    }
-
     @PostMapping("/users/register")
     public String saveUser(@ModelAttribute User user,
                            @RequestParam (name = "role") String role) {
@@ -154,19 +131,6 @@ public class UsersController {
         usersDao.save(editedUser);
         model.addAttribute("user", editedUser);
 
-//        List<Reference> references = new ArrayList<>();
-//
-//        int i = 0;
-//        for (String referencename:referencenames){
-//            references.add(new Reference(editedUser ,referencename, referencephones.get(i),referencecomments.get(i)));
-//
-//            i++;
-//        }
-//
-//        userCreated.setReferences(references);
-//
-//        usersDao.save(editedUser);
-
         return "redirect:/profile";
     }
 
@@ -194,8 +158,6 @@ public class UsersController {
         System.out.println(Arrays.toString(subjectsIds));
         List<Subject> subjects = new ArrayList<>();
         for (int i = 0; i < subjectsIds.length; i++) {
-            /*Subject subject = new Subject();
-            subject.setId(subjectsIds[i]);*/
             Subject subject = subjectsDao.findOne(subjectsIds[i]);
             subjects.add(subject);
         }
@@ -203,14 +165,6 @@ public class UsersController {
         teacher.setSubjects(subjects);
 
         usersDao.save(teacher);
-
-        /*User editedUser = usersDao.findOne(id);
-
-
-
-//        editedUser.setReferences(references);
-
-        referencesDao.save(new Reference(editedUser, referencenames, referencephones));*/
 
         return "redirect:/profile";
     }
