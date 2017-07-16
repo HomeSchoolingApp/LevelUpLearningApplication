@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <!--HEAD & STYLESHEETS-->
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1"/>
+        <title th:text="'Ooops, ' + ${error}"></title>
+        <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon"/>
+        <link rel="icon" href="image/favicon.ico" type="image/x-icon"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+              integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+              crossorigin="anonymous"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://use.fontawesome.com/4a71ee3d99.js"></script>
+        <link rel="stylesheet" href="stylesheets/stylesheet.css"/>
+
+    </head>
+<body>
+
+<div class="jumbotron">
+<th:block th:switch="${error}">
+    <div th:case="'Not Found'">
+        <h1>This feature is coming soon! Please select the back button to be redirected to the previous section</h1>
+    </div>
+    <div th:case="'Forbidden'">
+        <h1>Coming Soon!</h1>
+    </div>
+</th:block>
+</div>
+
+<!-- FOOTER STARTS HERE -->
+
+<footer class="mainfooter" role="contentinfo">
+    <div class="footer-top p-y-2">
+    </div>
+    <div class="footer-middle">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <!--Column1-->
+                    <div class="footer-pad">
+                        <h4 class="footertitle">Address</h4>
+                        <address>
+                            <ul class="list-unstyled">
+                                <li>
+                                    Codeup<br/>
+                                    600 Navarro St #350<br/>
+                                    San Antonio, TX<br/>
+                                    78205<br/>
+                                </li>
+                                <li>
+                                    Phone: (210) 555-5555
+                                </li>
+                            </ul>
+                        </address>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <!--Column1-->
+                    <div class="footer-pad">
+                        <h4 class="footertitle">Popular Services</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#"></a></li>
+                            <li><a href="#">Payment Center</a></li>
+                            <li><a href="#">Contact Directory</a></li>
+                            <li><a href="#">Forms</a></li>
+                            <li><a href="#">News and Updates</a></li>
+                            <li><a href="#">FAQs</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <!--Column1-->
+                    <div class="footer-pad">
+                        <h4 class="footertitle">Website Information</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Website Tutorial</a></li>
+                            <li><a href="#">Accessibility</a></li>
+                            <li><a href="#">Disclaimer</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">FAQs</a></li>
+                            <li><a href="#">Webmaster</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <!--Column1-->
+                    <div class="footer-pad">
+                        <h4 class="footertitle">Popular Departments</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Parks and Recreation</a></li>
+                            <li><a href="#">Public Works</a></li>
+                            <li><a href="#">Police Department</a></li>
+                            <li><a href="#">Fire</a></li>
+                            <li><a href="#">Mayor and City Council</a></li>
+                            <li>
+                                <a href="#"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12" style="width: 100%;">
+                    <!--Footer Bottom-->
+                    <p class="text-xs-center">&copy; leveluplearning.site 2017. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!--ALL SCRIPTS GO HERE-->
+
+<script>
+
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').focus()
+    })
+
+</script>
+
+<script src="js/scrollspyjs.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
