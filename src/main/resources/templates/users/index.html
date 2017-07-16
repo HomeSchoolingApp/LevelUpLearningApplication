@@ -75,9 +75,9 @@
         </h3>
     </div>
         <div class="search-functionality">
-            <form class="search-form" th:action="@{/searchTeachersBySubjects}" th:method="post">
-                <select id="subjectsDropdown" multiple="multiple" class="form-control" name="subjects">
-                    <option th:each="subject: *{subjects}" th:value="${subject.id}" th:text="${subject.name}"></option>
+            <form class="search-form" th:action="@{/searchTeachersBySubjects}" th:method="post" name="SearchSubjects">
+                <select id="subjectsDropdown" multiple="multiple" class="form-control" name="SearchSubjects">
+                    <option th:each="subject: *{subjects}" th:value="${subject.id}" th:text="${subject.name}" name="SearchSubjects"></option>
                 </select>
                 <div th:each="teacher : ${teachers}">
                     <h3>Subjects:</h3>
@@ -85,7 +85,8 @@
                         <span th:text="${subject.name}"></span>
                     </div>
                 </div>
-
+                <br/>
+                <br/>
                 <button class="btn btn-success">SEARCH</button>
             </form>
 
@@ -171,7 +172,7 @@
                 <div class="row">
                     <div class="col-xs-12" style="width: 100%;">
                         <!--Footer Bottom-->
-                        <p class="text-xs-center">&copy; Copyright 2017 - City of USA. All rights reserved.</p>
+                        <p class="text-xs-center">&copy; Leveluplearning.site - 2017. All rights reserved.</p>
                     </div>
                 </div>
             </div>
