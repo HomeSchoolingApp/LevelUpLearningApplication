@@ -71,22 +71,27 @@
     </div>
     <!--</div>-->
 
-    <div class="jumbotron jumbotron-fluid" style="padding: 1rem 1rem; margin-bottom: 2px;" th:each="teacher : ${teachers}">
+    <div class="jumbotron jumbotron-fluid" style="padding: 1rem 1rem; margin-bottom: 2px;"
+         th:each="teacher : ${teachers}">
         <div class="container">
-            <img id="teacherSeachImg" th:src="${'/uploads/' + teacher.imgUrl}" class="media-object" />
+            <img id="teacherSeachImg" th:src="${'/uploads/' + teacher.imgUrl}" class="media-object"/>
             <h1 class="display-3"><span th:text="${teacher.firstName + ' ' + teacher.lastName}"></span></h1>
-            <br />
-            <br />
+            <br/>
+            <br/>
             <p class="lead"><span th:text="${teacher.email + ' | ' + teacher.phoneNumber + ' | ' + teacher.city + ' | ' + teacher.state + ' | '
              + teacher.language}"></span></p>
             <p>
                 <span>
 
-                <button type="button" id="referencesbutton" class="btn btn-success" style="font-size: 20px"
+                    <button type="button" id="subjectsbutton" class="btn btn-success" style="font-size: 20px"
+                            data-toggle="modal" th:attr="data-target=${'#subjects'+ teacher.id}">SUBJECTS</button>
+
+                    <button type="button" id="referencesbutton" class="btn btn-success" style="font-size: 20px"
                         data-toggle="modal" th:attr="data-target=${'#references'+ teacher.id}">REFERENCES</button>
 
                     <button type="button" id="certificationsbutton" class="btn btn-success" style="font-size: 20px"
-                            data-toggle="modal" th:attr="data-target=${'#certifications' + teacher.id}">CERTIFICATIONS</button>
+                            data-toggle="modal"
+                            th:attr="data-target=${'#certifications' + teacher.id}">CERTIFICATIONS</button>
 
                     <button type="button" id="profSumbutton" class="btn btn-success" style="font-size: 20px"
                             data-toggle="modal" th:attr="data-target=${'#proSum' + teacher.id}">PRO. SUMMARY</button>
@@ -97,19 +102,21 @@
 
         <!-- Modal -->
 
-        <div class="modal fade" th:id="${'references' + teacher.id}" tabindex="-1" role="dialog" aria-labelledby="referencesLabel"
+        <div class="modal fade" th:id="${'subjects' + teacher.id}" tabindex="-1" role="dialog"
+             aria-labelledby="referencesLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header text-center">
-                        <h5 class="modal-title" id="referencesLabel">REFERENCES</h5>
+                        <h5 class="modal-title" id="referencesLabel">SUBJECTS</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body" style="text-align: left">
                         <h6 id="referenceInfo"></h6>
-                        <h6 th:each="reference:${teacher.references}" th:text="${reference.fullName + ' | ' + reference.phoneNumber}"></h6>
+                        <h6 th:each="subject:${teacher.subjects}"
+                            th:text="${subject.name}"></h6>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
@@ -122,7 +129,35 @@
 
         <!-- Modal -->
 
-        <div class="modal fade" th:id="${'certifications' + teacher.id}" tabindex="-1" role="dialog" aria-labelledby="certificatonsLabel"
+        <div class="modal fade" th:id="${'references' + teacher.id}" tabindex="-1" role="dialog"
+             aria-labelledby="referencesLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title" id="referencesLabel">REFERENCES</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="text-align: left">
+                        <h6 id="referenceInfo"></h6>
+                        <h6 th:each="reference:${teacher.references}"
+                            th:text="${reference.fullName + ' | ' + reference.phoneNumber}"></h6>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--END MODAL DIV-->
+
+        <!-- Modal -->
+
+        <div class="modal fade" th:id="${'certifications' + teacher.id}" tabindex="-1" role="dialog"
+             aria-labelledby="certificatonsLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -146,7 +181,8 @@
 
         <!-- Modal -->
 
-        <div class="modal fade" th:id="${'proSum' + teacher.id}" tabindex="-1" role="dialog" aria-labelledby="proSumLabel"
+        <div class="modal fade" th:id="${'proSum' + teacher.id}" tabindex="-1" role="dialog"
+             aria-labelledby="proSumLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -264,13 +300,13 @@
         $('#myInput').focus()
     })
 
-//$(document).on("click", "#referencesbutton", function () {
-//    var referencesData = $(this).data('id');
-//    $(".modal-body #referenceInfo").val( referencesData );
-//    // As pointed out in comments,
-//    // it is superfluous to have to manually call the modal.
-//    // $('#addBookDialog').modal('show');
-//});
+    //$(document).on("click", "#referencesbutton", function () {
+    //    var referencesData = $(this).data('id');
+    //    $(".modal-body #referenceInfo").val( referencesData );
+    //    // As pointed out in comments,
+    //    // it is superfluous to have to manually call the modal.
+    //    // $('#addBookDialog').modal('show');
+    //});
 
 </script>
 
