@@ -23,7 +23,7 @@ body, html {
 }
 
 h4 {
-    margin-top: 10px;
+    font-size: 35px;
     text-align: center;
 }
 
@@ -136,6 +136,8 @@ input::-webkit-input-placeholder {
     margin: 0 auto;
     /*max-width: 835px;*/
     padding: 30px;
+    padding-left: 20%;
+    padding-right: 20%;
     background-color:rgba(0, 0, 0, 0.5);
     /*background: #49c0f0; !* Old browsers *!*/
     /*background: -moz-linear-gradient(top, #49c0f0 0%, #2cafe3 100%); !* FF3.6-15 *!*/
@@ -148,6 +150,13 @@ input::-webkit-input-placeholder {
     -moz-box-shadow: 0px 5px 15px 4px rgba(0, 0, 0, 0.40);
     box-shadow: 0px 5px 15px 4px rgba(0, 0, 0, 0.40);
 
+}
+
+@media (max-width: 640px) {
+    .main-center {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
 }
 
 .input-group-addon {
