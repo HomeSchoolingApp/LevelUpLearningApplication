@@ -83,13 +83,13 @@
                 <span>
 
                 <button type="button" id="referencesbutton" class="btn btn-success" style="font-size: 20px"
-                        data-toggle="modal" data-target="#references">REFERENCES</button>
+                        data-toggle="modal" th:attr="data-target=${'#references'+ teacher.id}">REFERENCES</button>
 
                     <button type="button" id="certificationsbutton" class="btn btn-success" style="font-size: 20px"
-                            data-toggle="modal" data-target="#certifications">CERTIFICATIONS</button>
+                            data-toggle="modal" th:attr="data-target=${'#certifications' + teacher.id}">CERTIFICATIONS</button>
 
                     <button type="button" id="profSumbutton" class="btn btn-success" style="font-size: 20px"
-                            data-toggle="modal" data-target="#proSum">PRO. SUMMARY</button>
+                            data-toggle="modal" th:attr="data-target=${'#proSum' + teacher.id}">PRO. SUMMARY</button>
 
             </span>
             </p>
@@ -97,7 +97,7 @@
 
         <!-- Modal -->
 
-        <div class="modal fade" id="references" tabindex="-1" role="dialog" aria-labelledby="referencesLabel"
+        <div class="modal fade" th:id="${'references' + teacher.id}" tabindex="-1" role="dialog" aria-labelledby="referencesLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -122,7 +122,7 @@
 
         <!-- Modal -->
 
-        <div class="modal fade" id="certifications" tabindex="-1" role="dialog" aria-labelledby="certificatonsLabel"
+        <div class="modal fade" th:id="${'certifications' + teacher.id}" tabindex="-1" role="dialog" aria-labelledby="certificatonsLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -146,7 +146,7 @@
 
         <!-- Modal -->
 
-        <div class="modal fade" id="proSum" tabindex="-1" role="dialog" aria-labelledby="proSumLabel"
+        <div class="modal fade" th:id="${'proSum' + teacher.id}" tabindex="-1" role="dialog" aria-labelledby="proSumLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
