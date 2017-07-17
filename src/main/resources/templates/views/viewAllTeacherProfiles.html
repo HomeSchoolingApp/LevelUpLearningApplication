@@ -6,17 +6,17 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1"/>
-    <title>Parent Profile</title>
+    <title>View All Teachers</title>
     <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon"/>
     <link rel="icon" href="image/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://use.fontawesome.com/4a71ee3d99.js"></script>
-    <link rel="stylesheet" href="stylesheets/stylesheet.css"/>
+    <link rel="stylesheet" th:href="@{/stylesheets/stylesheet.css}"/>
 
 </head>
-
+<body>
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
@@ -30,96 +30,249 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-md-0">
 
-            <li class="nav-item" sec:authorize="isAuthenticated()"><a href="#" class="nav-link">Welcome, <span
-                    sec:authentication="name">Name</span></a></li>
+            <li class="nav-item" sec:authorize="isAuthenticated()"><a href="/profile" class="nav-link"><span
+                    th:text="${user.firstName + ' ' + user.lastName}"></span></a></li>
+            <!--<li class="nav-item"><a href="/updateprofile" class="nav-link">Edit Profile</a></li>-->
             <li class="nav-item"><a href="/teachers" class="nav-link">View all Teachers</a></li>
-            <li class="nav-item" sec:authorize="isAuthenticated()"><a href="/subjects" class="nav-link">View
-                subjects</a></li>
-            <li class="nav-item" sec:authorize="isAuthenticated()">
-                <form th:action="@{/logout}" th:method="post">
-                    <button class="nav-link btn btn-link" style="margin-top: 2px">Logout</button>
-                </form>
-            </li>
+            <!--<li class="nav-item" sec:authorize="isAuthenticated()">-->
+            <!--<form th:action="@{/logout}" th:method="post">-->
+            <!--<button class="nav-link btn btn-link" style="margin-top: 2px">Logout</button>-->
+            <!--</form>-->
+            <!--</li>-->
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" />
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <form th:action="@{/logout}" th:method="post" class="nav-item" sec:authorize="isAuthenticated()">
+            <button class="nav-link btn-link">Logout</button>
         </form>
+        <div id="settingsIcon">
+            <span><a href="/updateprofile"><i class="fa fa-cogs" aria-hidden="true"></i></a></span>
+        </div>
 
     </div>
 </nav>
 
-<body>
-    <div class="container left">
-        <h1>Teachers</h1>
-        <br/>
 
-            <div th:each="teacher : ${teachers}" class="media">
-                <div class="media-left">
-                    <a href="#">
-                        <img src="  " class="media-object" height="64px" width="64px"/><!--th:src="${image.path}"-->
-                    </a>
-                </div>
-                <div class="media-body pull-left">
-                    <h4 class="media-heading pull-left"><span th:text="${teacher.firstName} + ${teacher.lastName}"></span></h4>
-                    <br/>
-                    <div class="row media-body pull-left">
-                        <div class="info">
-                            <h6 th:text="${teacher.gender}"></h6>
-                        </div>
-                        <div class="info">
-                            <h6 th:text="${teacher.email}"></h6>
-                        </div>
-                        <div class="info">
-                            <h6 th:text="${teacher.phoneNumber}"></h6>
-                        </div>
-                        <div class="info">
-                            <h6 th:text="${teacher.city}"></h6>
-                        </div>
-                        <div class="info">
-                            <h6 th:text="${teacher.state}"></h6>
-                        </div>
-                        <div class="info">
-                            <h6 th:text="${teacher.language}"></h6>
-                        </div>
-                        <div class="info">
-                            <h6 th:each="reference:${teacher.references}" th:text="${teacher.fullName}"></h6>
-                        </div>
-                        <div class="info">
-                            <h6 th:text="${teacher.certification}"></h6>
-                        </div>
-                        <p th:text="${teacher.profSum}" align="left" ></p><!--test-->
+<div class="container">
+    <div class="jumbotron" id="profilebackground">
+        <h1 class="display-3">Searching For Someone Specific?</h1>
+        <hr class="my-4"/>
+        <div class="description">
+            <p class="display-3">
+            <h3>Searching through our full list of teachers is easier then ever! Just type in the teachers name you're
+                looking for and click the big green button and watch the magic happen!</h3>
+            </p>
+        </div>
+        <hr class="my-4"/>
+        <form th:action="@{/search/teachers}" th:method="POST">
+            <input type="text" class="form-control" name="searchTerm" style="text-align: center"
+                   placeholder="Search Teacher Name"/>
+            <br/>
+            <button class="btn btn-success">SEARCH</button>
+        </form>
+    </div>
+    <!--</div>-->
+
+    <div class="jumbotron jumbotron-fluid" style="padding: 1rem 1rem; margin-bottom: 2px;" th:each="teacher : ${teachers}">
+        <div class="container">
+            <img id="teacherSeachImg" th:src="${'/uploads/' + teacher.imgUrl}" class="media-object" />
+            <h1 class="display-3"><span th:text="${teacher.firstName + ' ' + teacher.lastName}"></span></h1>
+            <br />
+            <br />
+            <p class="lead"><span th:text="${teacher.email + ' | ' + teacher.phoneNumber + ' | ' + teacher.city + ' | ' + teacher.state + ' | '
+             + teacher.language}"></span></p>
+            <p>
+                <span>
+
+                <button type="button" id="referencesbutton" class="btn btn-success" style="font-size: 20px"
+                        data-toggle="modal" th:attr="data-target=${'#references'+ teacher.id}">REFERENCES</button>
+
+                    <button type="button" id="certificationsbutton" class="btn btn-success" style="font-size: 20px"
+                            data-toggle="modal" th:attr="data-target=${'#certifications' + teacher.id}">CERTIFICATIONS</button>
+
+                    <button type="button" id="profSumbutton" class="btn btn-success" style="font-size: 20px"
+                            data-toggle="modal" th:attr="data-target=${'#proSum' + teacher.id}">PRO. SUMMARY</button>
+
+            </span>
+            </p>
+        </div>
+
+        <!-- Modal -->
+
+        <div class="modal fade" th:id="${'references' + teacher.id}" tabindex="-1" role="dialog" aria-labelledby="referencesLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title" id="referencesLabel">REFERENCES</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <br />
+                    <div class="modal-body" style="text-align: left">
+                        <h6 id="referenceInfo"></h6>
+                        <h6 th:each="reference:${teacher.references}" th:text="${reference.fullName + ' | ' + reference.phoneNumber}"></h6>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
-<div class="container">
-    <h1>Teachers</h1>
-    <h2>Listing of all teachers available</h2>
+        </div>
 
-    <div th:each="teacher : ${teachers}">
+        <!--END MODAL DIV-->
 
-        <!--<div th:each="image : ${teacher.images}">-->
-            <!--<img th:src="${image.path}" width="200px" height="200px" />-->
-        <!--</div>-->
+        <!-- Modal -->
 
-        <!--<div th:if="${teacher.imageUrl}">-->
-            <!--<img th:src="${'/uploads/' + teacher.imageUrl}" alt="" width="200" height="200" />-->
-        <!--</div>-->
+        <div class="modal fade" th:id="${'certifications' + teacher.id}" tabindex="-1" role="dialog" aria-labelledby="certificatonsLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title" id="certificatonsLabel">TEACHER CERTIFICATIONS</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <p><h6 th:text="${teacher.certification}"></h6></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <h2>Name: <span th:text="${teacher.firstName} + ${teacher.lastName}"></span></h2>
-        <h2>Gender: <span th:text="${teacher.gender}"></span></h2>
-        <h2>Email: <span th:text="${teacher.email}"></span></h2>
-        <h2>Phone Number: <span th:text="${teacher.phoneNumber}"></span></h2>
-        <h2>City: <span th:text="${teacher.city}"></span></h2>
-        <h2>State: <span th:text="${teacher.state}"></span></h2>
-        <h2>Language: <span th:text="${teacher.language}"></span></h2>
-        <h2>References: <span th:each="reference:${teacher.references}" th:text="${reference.fullName}"></span></h2>
-        <h2>Certification: <span th:text="${teacher.certification}"></span></h2>
-        <h2>Professional Summary: <span th:text="${teacher.profSum}"></span></h2>
+        <!--END MODAL DIV-->
+
+        <!-- Modal -->
+
+        <div class="modal fade" th:id="${'proSum' + teacher.id}" tabindex="-1" role="dialog" aria-labelledby="proSumLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title" id="proSumLabel">PROFESSIONAL SUMMARY</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <p><h6 th:text="${teacher.profSum}"></h6></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--END MODAL DIV-->
+
     </div>
 
-</body>
+    <!-- FOOTER STARTS HERE -->
+
+    <footer class="mainfooter" role="contentinfo">
+        <div class="footer-top p-y-2">
+        </div>
+        <div class="footer-middle">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <!--Column1-->
+                        <div class="footer-pad">
+                            <h4 class="footertitle">Address</h4>
+                            <address>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        Codeup<br/>
+                                        600 Navarro St #350<br/>
+                                        San Antonio, TX<br/>
+                                        78205<br/>
+                                    </li>
+                                    <li>
+                                        Phone: (210) 555-5555
+                                    </li>
+                                </ul>
+                            </address>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <!--Column1-->
+                        <div class="footer-pad">
+                            <h4 class="footertitle">Popular Services</h4>
+                            <ul class="list-unstyled">
+                                <li><a href="#"></a></li>
+                                <li><a href="#">Payment Center</a></li>
+                                <li><a href="#">Contact Directory</a></li>
+                                <li><a href="#">Forms</a></li>
+                                <li><a href="#">News and Updates</a></li>
+                                <li><a href="#">FAQs</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <!--Column1-->
+                        <div class="footer-pad">
+                            <h4 class="footertitle">Website Information</h4>
+                            <ul class="list-unstyled">
+                                <li><a href="#">Website Tutorial</a></li>
+                                <li><a href="#">Accessibility</a></li>
+                                <li><a href="#">Disclaimer</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">FAQs</a></li>
+                                <li><a href="#">Webmaster</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <!--Column1-->
+                        <div class="footer-pad">
+                            <h4 class="footertitle">Popular Departments</h4>
+                            <ul class="list-unstyled">
+                                <li><a href="#">Parks and Recreation</a></li>
+                                <li><a href="#">Public Works</a></li>
+                                <li><a href="#">Police Department</a></li>
+                                <li><a href="#">Fire</a></li>
+                                <li><a href="#">Mayor and City Council</a></li>
+                                <li>
+                                    <a href="#"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12" style="width: 100%;">
+                        <!--Footer Bottom-->
+                        <p class="text-xs-center">&copy; Leveluplearning.site - 2017. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+<script>
+
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').focus()
+    })
+
+//$(document).on("click", "#referencesbutton", function () {
+//    var referencesData = $(this).data('id');
+//    $(".modal-body #referenceInfo").val( referencesData );
+//    // As pointed out in comments,
+//    // it is superfluous to have to manually call the modal.
+//    // $('#addBookDialog').modal('show');
+//});
+
+</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
         integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
@@ -129,6 +282,6 @@
         crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
+</body>
 
 </html>

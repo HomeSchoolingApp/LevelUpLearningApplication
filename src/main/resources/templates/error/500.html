@@ -1,91 +1,42 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <!--HEAD & STYLESHEETS-->
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1"/>
-    <title>Login</title>
+    <title th:text="'Ooops, ' + ${error}"></title>
     <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon"/>
     <link rel="icon" href="image/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+          crossorigin="anonymous"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://use.fontawesome.com/4a71ee3d99.js"></script>
-    <link rel="stylesheet" href="stylesheets/formstylesheet.css"/>
+    <link rel="stylesheet" href="stylesheets/stylesheet.css"/>
 
 </head>
-
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-            data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
-            aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <a class="navbar-brand" href="/">Level Up Learning</a>
-
-
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto mt-2 mt-md-0">
-
-            <li class="nav-item" sec:authorize="isAuthenticated()"><a href="#" class="nav-link">Welcome, <span
-                    sec:authentication="name">Name</span></a></li>
-            <li class="nav-item"><a href="/teachers" class="nav-link">View all Teachers</a></li>
-            <li class="nav-item" sec:authorize="isAuthenticated()"><a href="/subjects" class="nav-link">View
-                subjects</a></li>
-            <li class="nav-item" sec:authorize="isAuthenticated()">
-                <form th:action="@{/logout}" th:method="post">
-                    <button class="nav-link btn btn-link" style="margin-top: 2px">Logout</button>
-                </form>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search"/>
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-
-    </div>
-</nav>
-
 <body>
 
-<div class="background-image">
-
-    <div class="">
-        <div class="search-functionality">
-            <h2 style="font-size:25px">What would you like to learn today?</h2>
-            <div class="search-functionality">
-                <form class="search-form" th:action="@{/searchTeachersBySubjects}" th:method="post">
-                    <select multiple="multiple" class="form-control" name="subjects">
-                        <option th:each="subject: *{subjects}" th:value="${subject.id}"
-                                th:text="${subject.name}"></option>
-                    </select>
-                    <div th:each="teacher : ${teachers}">
-                        <h3>Subjects:</h3>
-                        <div th:each="subject : ${teacher.subjects}">
-                            <span th:text="${subject.name}"></span>
-                        </div>
-                    </div>
-
-                    <button class="search-btn">SEARCH TEACHERS by SUBJECT</button>
-                </form>
-
-            </div>
-
+<div class="jumbotron">
+    <th:block th:switch="${error}">
+        <div th:case="'Not Found'">
+            <h1>Ooooops! Try again!</h1>
         </div>
-
-    </div>
-
+        <div th:case="'Forbidden'">
+            <h1>Coming Soon!</h1>
+        </div>
+    </th:block>
 </div>
 
+<!-- FOOTER STARTS HERE -->
 
 <footer class="mainfooter" role="contentinfo">
     <div class="footer-top p-y-2">
     </div>
     <div class="footer-middle">
         <div class="container">
-            <div class="row footer-row">
+            <div class="row">
                 <div class="col-md-3 col-sm-6">
                     <!--Column1-->
                     <div class="footer-pad">
@@ -157,51 +108,33 @@
             <div class="row">
                 <div class="col-xs-12" style="width: 100%;">
                     <!--Footer Bottom-->
-                    <p class="text-xs-center">&copy; Leveluplearning.site - 2017. All rights reserved.</p>
+                    <p class="text-xs-center">&copy; leveluplearning.site 2017. All rights reserved.</p>
                 </div>
             </div>
         </div>
     </div>
 </footer>
-</div>
 
-</body>
 
-<script src="js/js-webshim/minified/polyfiller.js"></script>
+<!--ALL SCRIPTS GO HERE-->
 
 <script>
-    (function () {
-        webshim.setOptions('forms', {
-            lazyCustomMessages: true,
-            iVal: {
-                sel: '.ws-validate',
-                handleBubble: 'hide', // hide error bubble
 
-                //add bootstrap specific classes
-                errorMessageClass: 'help-block',
-                successWrapperClass: 'has-success',
-                errorWrapperClass: 'has-error',
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').focus()
+    })
 
-                //add config to find right wrapper
-                fieldWrapper: '.form-group'
-            }
-        });
-
-        //load forms polyfill + iVal feature
-        webshim.polyfill('forms');
-    })();
 </script>
 
-<script
-        src="https://code.jquery.com/jquery-3.2.1.min.js"
-        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous"></script>
+<script src="js/scrollspyjs.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
         integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
         crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
         integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
         crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+</body>
 
 </html>
